@@ -2,13 +2,16 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Стив Джобс — Официальная биография Уолтера Айзексона</title>
-    <meta name="description" content="Интерактивный сайт единственной официальной биографии Стива Джобса от Уолтера Айзексона: вехи жизни, аудио-тизер, превью разворотов книги и архивные кадры.">
-    <!-- Подключение шрифтов Inter и Plus Jakarta Sans -->
+    <meta name="description" content="Интерактивное веб-приложение единственной официальной биографии Стива Джобса от Уолтера Айзексона: вехи жизни, аудио-тизер, превью разворотов книги и архивные кадры в эстетике Apple.">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Подключение шрифтов Inter, Plus Jakarta Sans и Newsreader -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+    
     <!-- Иконки Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -16,22 +19,21 @@
         :root {
             --bg-main: #000000;
             --bg-surface: #0a0a0c;
-            --bg-card: rgba(22, 22, 26, 0.7);
-            --bg-card-hover: rgba(32, 32, 38, 0.88);
+            --bg-card: rgba(22, 22, 26, 0.72);
+            --bg-card-hover: rgba(30, 30, 36, 0.9);
             --border-color: rgba(255, 255, 255, 0.1);
             --border-glow: rgba(255, 255, 255, 0.28);
             --text-primary: #f5f5f7;
             --text-secondary: #86868b;
             --accent-silver: #e5e5ea;
             --accent-blue: #2997ff;
-            --accent-blue-glow: rgba(41, 151, 255, 0.25);
+            --accent-blue-glow: rgba(41, 151, 255, 0.35);
             --gradient-apple: linear-gradient(135deg, #ffffff 0%, #86868b 100%);
-            --gradient-glow: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
             --radius-sm: 10px;
             --radius-md: 14px;
             --radius-lg: 20px;
             --radius-xl: 30px;
-            --transition-apple: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-apple: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -39,6 +41,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
@@ -65,11 +68,11 @@
             z-index: -1;
             background: 
                 radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 40%, rgba(41, 151, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 35%, rgba(41, 151, 255, 0.06) 0%, transparent 45%),
                 radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
         }
 
-        /* Шапка */
+        /* Шапка десктоп */
         header {
             position: fixed;
             top: 0;
@@ -124,10 +127,10 @@
             font-size: 0.88rem;
             font-weight: 500;
             transition: color 0.2s ease;
-            position: relative;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--text-primary);
         }
 
@@ -135,15 +138,6 @@
             display: flex;
             gap: 12px;
             align-items: center;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: transparent;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            padding: 8px;
         }
 
         /* Кнопки */
@@ -169,7 +163,7 @@
         }
 
         .btn-ghost:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.16);
             border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-2px);
         }
@@ -184,7 +178,7 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             background: #f0f0f5;
-            box-shadow: 0 6px 28px rgba(255, 255, 255, 0.35);
+            box-shadow: 0 6px 28px rgba(255, 255, 255, 0.38);
         }
 
         /* Hero секция */
@@ -219,7 +213,7 @@
 
         .hero h1 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+            font-size: clamp(2.6rem, 5.5vw, 4.2rem);
             font-weight: 800;
             line-height: 1.08;
             letter-spacing: -0.03em;
@@ -391,7 +385,7 @@
                         -15px 15px 25px rgba(0, 0, 0, 0.7);
         }
 
-        /* Статистика */
+        /* Полоса статистики */
         .stats-bar {
             border-top: 1px solid var(--border-color);
             border-bottom: 1px solid var(--border-color);
@@ -434,7 +428,7 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 56px;
         }
 
         .section-header h2 {
@@ -898,12 +892,6 @@
             transform: scale(0.96);
         }
 
-        .player-play-btn svg {
-            width: 28px;
-            height: 28px;
-            transition: var(--transition-apple);
-        }
-
         .player-center-content {
             display: flex;
             flex-direction: column;
@@ -1354,6 +1342,7 @@
             box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
         }
 
+        /* Lightbox модальное окно */
         .lightbox-modal {
             position: fixed;
             top: 0;
@@ -1421,7 +1410,7 @@
         }
 
         /* ==========================================================================
-           BENTO GRID И ДРУГИЕ СЕКЦИИ (С УЛУЧШЕНИЯМИ)
+           4. BENTO GRID (ФИЛОСОФИЯ И ДНК)
            ========================================================================== */
         .bento-grid {
             display: grid;
@@ -1617,6 +1606,7 @@
             flex-direction: column;
             align-items: center;
             transition: var(--transition-apple);
+            position: relative;
         }
 
         .format-card:hover {
@@ -1628,6 +1618,19 @@
             border-color: #ffffff;
             background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(22,22,26,0.85) 100%);
             box-shadow: 0 16px 48px rgba(255, 255, 255, 0.08);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            background: #ffffff;
+            color: #000000;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
         .format-icon {
@@ -1666,7 +1669,7 @@
         /* Футер */
         footer {
             border-top: 1px solid var(--border-color);
-            padding: 60px 24px 40px;
+            padding: 60px 24px 100px;
             max-width: 1240px;
             margin: 0 auto;
         }
@@ -1682,7 +1685,218 @@
         }
 
         /* ==========================================================================
-           4. АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (SCROLL REVEAL)
+           5. МОБИЛЬНАЯ НИЖНЯЯ ПАНЕЛЬ НАВИГАЦИИ (iOS TAB BAR)
+           ========================================================================== */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1500;
+            background: rgba(10, 10, 14, 0.88);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 8px));
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 500;
+            transition: var(--transition-apple);
+            padding: 4px 8px;
+            border-radius: 8px;
+        }
+
+        .mobile-nav-item svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .mobile-nav-item:active svg {
+            transform: scale(0.9);
+        }
+
+        .mobile-nav-item.active {
+            color: #ffffff;
+        }
+
+        .mobile-nav-item.active svg {
+            color: var(--accent-blue);
+        }
+
+        /* ==========================================================================
+           6. ИНТЕРАКТИВНОЕ МОДАЛЬНОЕ ОКНО ЗАКАЗА (CHECKOUT SHEET)
+           ========================================================================== */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-backdrop.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-card {
+            background: #111116;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 36px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-backdrop.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-apple);
+        }
+
+        .modal-close-btn:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .modal-header {
+            margin-bottom: 24px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 6px;
+        }
+
+        .modal-header p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .order-summary-box {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .order-format-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .order-format-sub {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .order-format-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .modal-form-group {
+            margin-bottom: 16px;
+        }
+
+        .modal-form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .modal-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .modal-input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(41, 151, 255, 0.3);
+        }
+
+        .apple-pay-btn {
+            width: 100%;
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 14px;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: var(--transition-apple);
+        }
+
+        .apple-pay-btn:hover {
+            background: #e5e5ea;
+            transform: translateY(-2px);
+        }
+
+        /* ==========================================================================
+           7. АНИМАЦИИ SCROLL REVEAL
            ========================================================================== */
         .reveal {
             opacity: 0;
@@ -1710,12 +1924,10 @@
         }
 
         /* ==========================================================================
-           АДАПТИВНОСТЬ
+           8. АДАПТИВНОСТЬ
            ========================================================================== */
         @media (max-width: 1024px) {
             .nav-links { display: none; }
-            .mobile-menu-btn { display: block; }
-            
             .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
             .hero p { margin-left: auto; margin-right: auto; }
             .hero-buttons { justify-content: center; }
@@ -1740,13 +1952,38 @@
             .formats-grid { grid-template-columns: 1fr; }
         }
 
-        @media (max-width: 640px) {
-            .timeline-buttons-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-            .timeline-nav-track { display: none; }
-            .timeline-stage { padding: 24px 16px; }
-            .player-card { padding: 24px 16px; }
-            .stat-item h3 { font-size: 2.1rem; }
-            .section-header h2 { font-size: 2rem; }
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: calc(65px + env(safe-area-inset-bottom, 10px));
+            }
+            .mobile-bottom-nav {
+                display: flex;
+            }
+            .nav-actions {
+                display: none;
+            }
+            .timeline-buttons-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .timeline-nav-track {
+                display: none;
+            }
+            .timeline-stage {
+                padding: 24px 16px;
+            }
+            .player-card {
+                padding: 24px 16px;
+            }
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            .stat-item h3 {
+                font-size: 2.1rem;
+            }
+            footer {
+                padding-bottom: 110px;
+            }
         }
     </style>
 </head>
@@ -1760,11 +1997,10 @@
         <source src="audio/steve_jobs_teaser.m4a" type="audio/mp4">
     </audio>
 
-    <!-- Шапка -->
+    <!-- Шапка (Десктоп) -->
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
-                <!-- Векторный оригинал логотипа Apple -->
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.13-1.96.99-3.1-.97.04-2.16.65-2.85 1.46-.62.72-1.16 1.88-1.01 3 1.08.08 2.2-.54 2.87-1.36z"/>
                 </svg>
@@ -1781,10 +2017,34 @@
                 <li><a href="#buy">Купить</a></li>
             </ul>
             <div class="nav-actions">
-                <a href="#buy" class="btn btn-primary">Заказать книгу</a>
+                <button class="btn btn-primary" onclick="openOrderModal('Твёрдый переплёт', '100 $')">Заказать книгу</button>
             </div>
         </div>
     </header>
+
+    <!-- Мобильная нижняя панель навигации (iOS Tab Bar) -->
+    <nav class="mobile-bottom-nav" id="mobileBottomNav">
+        <a href="#about" class="mobile-nav-item active" data-section="about">
+            <i data-lucide="home"></i>
+            <span>Главная</span>
+        </a>
+        <a href="#timeline" class="mobile-nav-item" data-section="timeline">
+            <i data-lucide="milestone"></i>
+            <span>Вехи</span>
+        </a>
+        <a href="#audio-teaser" class="mobile-nav-item" data-section="audio-teaser">
+            <i data-lucide="headphones"></i>
+            <span>Аудио</span>
+        </a>
+        <a href="#book-preview" class="mobile-nav-item" data-section="book-preview">
+            <i data-lucide="book-open"></i>
+            <span>Книга</span>
+        </a>
+        <a href="#buy" class="mobile-nav-item" data-section="buy">
+            <i data-lucide="shopping-bag"></i>
+            <span>Купить</span>
+        </a>
+    </nav>
 
     <!-- Hero Секция -->
     <section class="hero" id="about">
@@ -1810,11 +2070,9 @@
         <!-- 3D Обложка -->
         <div class="book-wrapper reveal reveal-delay-2">
             <div class="book-3d">
-                <!-- Лицевая грань -->
                 <div class="side front">
                     <img src="cover.jpg" alt="Стив Джобс — Уолтер Айзексон" onerror="this.style.display='none'; document.getElementById('css-cover-fallback').style.display='flex';">
                     
-                    <!-- Запасная CSS-обложка -->
                     <div id="css-cover-fallback" class="fallback-cover" style="display: none;">
                         <span class="fb-author">WALTER ISAACSON</span>
                         <h2 class="fb-title">STEVE JOBS</h2>
@@ -1831,15 +2089,11 @@
                     </div>
                 </div>
 
-                <!-- Корешок -->
                 <div class="side spine">
                     <span>УОЛТЕР АЙЗЕКСОН — СТИВ ДЖОБС</span>
                 </div>
 
-                <!-- Блок со страницами -->
                 <div class="side pages"></div>
-
-                <!-- Задняя сторона -->
                 <div class="side back"></div>
             </div>
         </div>
@@ -1881,7 +2135,7 @@
         </div>
 
         <div class="reveal">
-            <!-- Навигационная рельса с годами -->
+            <!-- Навигационная шкала с прогресс-баром -->
             <div class="timeline-nav-wrapper">
                 <div class="timeline-nav-track">
                     <div class="timeline-nav-progress" id="timelineProgressBar" style="width: 0%;"></div>
@@ -1910,9 +2164,9 @@
                 </div>
             </div>
 
-            <!-- Интерактивная сцена карточки вехи -->
+            <!-- Интерактивная сцена вех -->
             <div class="timeline-stage">
-                <!-- Веха 1: 1976 -->
+                <!-- 1976: Гараж -->
                 <div class="timeline-content-panel active" id="timelinePanel-0">
                     <div class="timeline-image-box">
                         <img src="images/archive_garage_1976.jpg" alt="Гараж в Лос-Альтосе 1976">
@@ -1948,7 +2202,7 @@
                     </div>
                 </div>
 
-                <!-- Веха 2: 1985 -->
+                <!-- 1985: Изгнание -->
                 <div class="timeline-content-panel" id="timelinePanel-1">
                     <div class="timeline-image-box">
                         <img src="images/archive_exile_1985.jpg" alt="Изгнание и основание NeXT 1985">
@@ -1984,7 +2238,7 @@
                     </div>
                 </div>
 
-                <!-- Веха 3: 1997 -->
+                <!-- 1997: Возвращение -->
                 <div class="timeline-content-panel" id="timelinePanel-2">
                     <div class="timeline-image-box">
                         <img src="images/archive_think_different_1997.jpg" alt="Возвращение Стива Джобса 1997">
@@ -2020,7 +2274,7 @@
                     </div>
                 </div>
 
-                <!-- Веха 4: 2007 -->
+                <!-- 2007: iPhone -->
                 <div class="timeline-content-panel" id="timelinePanel-3">
                     <div class="timeline-image-box">
                         <img src="images/archive_iphone_2007.jpg" alt="Презентация iPhone 2007">
@@ -2056,7 +2310,7 @@
                     </div>
                 </div>
 
-                <!-- Нижние кнопки листания таймлайна -->
+                <!-- Кнопки листания таймлайна -->
                 <div class="timeline-controls-row">
                     <button class="timeline-arrow-btn" id="prevTimelineBtn" onclick="stepTimeline(-1)" disabled>
                         <i data-lucide="chevron-left"></i>
@@ -2104,13 +2358,11 @@
 
                 <!-- Главная сетка управления -->
                 <div class="player-main-grid">
-                    <!-- Кнопка Play / Pause -->
                     <button class="player-play-btn" id="mainPlayBtn" title="Воспроизвести цитату Стива Джобса" aria-label="Воспроизведение">
                         <i data-lucide="play" id="playIcon"></i>
                     </button>
 
                     <div class="player-center-content">
-                        <!-- Название трека -->
                         <div class="player-title-row">
                             <h4>Манифест «Think Different» (Here’s to the Crazy Ones)</h4>
                             <span>Купертино, 1997 • Монолог Стива Джобса</span>
@@ -2189,7 +2441,6 @@
         </div>
 
         <div class="flipbook-container reveal">
-            <!-- Разворот книги -->
             <div class="book-spread-card" id="bookSpreadCard">
                 <!-- Левая полоса (Архивная фотография) -->
                 <div class="spread-page-left">
@@ -2269,7 +2520,9 @@
         </div>
     </div>
 
-    <!-- Ключевые принципы / Bento Grid -->
+    <!-- ==========================================================================
+           4. BENTO GRID (ФИЛОСОФИЯ И ДНК)
+         ========================================================================== -->
     <section class="section-padding" id="themes">
         <div class="section-header reveal">
             <div class="badge">
@@ -2383,15 +2636,16 @@
                 <h3>Электронная</h3>
                 <p>EPUB, FB2, PDF • Мгновенная загрузка на iPad, Kindle или смартфон</p>
                 <div class="price-tag">20 $</div>
-                <a href="#buy" class="btn btn-ghost" style="width: 100%;">Читать сейчас</a>
+                <button class="btn btn-ghost" style="width: 100%;" onclick="openOrderModal('Электронная версия (EPUB, PDF)', '20 $')">Купить электронную</button>
             </div>
 
             <div class="format-card featured reveal reveal-delay-2">
+                <span class="featured-badge">Коллекционное издание</span>
                 <div class="format-icon" style="background: #fff; color: #000;"><i data-lucide="book"></i></div>
                 <h3>Твёрдый переплёт</h3>
                 <p>Коллекционная суперобложка, мелованная бумага, архивные цветные вкладки</p>
                 <div class="price-tag">100 $</div>
-                <a href="#buy" class="btn btn-primary" style="width: 100%;">Заказать с доставкой</a>
+                <button class="btn btn-primary" style="width: 100%;" onclick="openOrderModal('Твёрдый переплёт (Коллекционное издание)', '100 $')">Заказать с доставкой</button>
             </div>
 
             <div class="format-card reveal reveal-delay-3">
@@ -2399,10 +2653,51 @@
                 <h3>Аудиокнига</h3>
                 <p>Профессиональный многоголосый дубляж студийного качества • 25 часов</p>
                 <div class="price-tag">60 $</div>
-                <a href="#audio-teaser" class="btn btn-ghost" style="width: 100%;">Слушать отрывок</a>
+                <button class="btn btn-ghost" style="width: 100%;" onclick="openOrderModal('Аудиокнига (25 часов без купюр)', '60 $')">Купить аудиокнигу</button>
             </div>
         </div>
     </section>
+
+    <!-- Модальное окно оформления заказа -->
+    <div class="modal-backdrop" id="orderModal" onclick="closeOrderModal(event)">
+        <div class="modal-card">
+            <button class="modal-close-btn" onclick="closeOrderModal(event)" aria-label="Закрыть">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-header">
+                <h3>Оформление заказа</h3>
+                <p>Быстрый заказ в фирменном стиле Apple Store</p>
+            </div>
+
+            <div class="order-summary-box">
+                <div>
+                    <div class="order-format-name" id="modalFormatTitle">Твёрдый переплёт</div>
+                    <div class="order-format-sub">Официальная биография Стива Джобса</div>
+                </div>
+                <div class="order-format-price" id="modalFormatPrice">100 $</div>
+            </div>
+
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+                <div class="modal-form-group">
+                    <label for="orderName">Ваше имя</label>
+                    <input type="text" id="orderName" class="modal-input" placeholder="Стивен Возняк" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="orderEmail">Email для связи и доставки</label>
+                    <input type="email" id="orderEmail" class="modal-input" placeholder="steve@apple.com" required>
+                </div>
+                <div class="modal-form-group">
+                    <label for="orderAddress">Город и адрес доставки (для печатных изданий)</label>
+                    <input type="text" id="orderAddress" class="modal-input" placeholder="г. Москва, ул. Тверская 1">
+                </div>
+
+                <button type="submit" class="apple-pay-btn" id="submitOrderBtn">
+                    <i data-lucide="credit-card" style="width: 18px;"></i>
+                    <span>Оплатить заказ</span>
+                </button>
+            </form>
+        </div>
+    </div>
 
     <!-- Подвал -->
     <footer>
@@ -2419,7 +2714,7 @@
 
     <!-- Скрипты взаимодействия -->
     <script>
-        // Инициализация Lucide icons
+        // Инициализация Lucide иконок
         lucide.createIcons();
 
         /* ==========================================================================
@@ -2427,7 +2722,7 @@
            ========================================================================== */
         document.addEventListener('DOMContentLoaded', () => {
             const reveals = document.querySelectorAll('.reveal');
-            const revealObserver = new IntersectionObserver((entries, observer) => {
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('reveal-visible');
@@ -2507,12 +2802,10 @@
            ========================================================================== */
         const audio = document.getElementById('steveJobsAudio');
         const playBtn = document.getElementById('mainPlayBtn');
-        const playIcon = document.getElementById('playIcon');
         const playerCard = document.getElementById('playerCard');
         const timeCurrentEl = document.getElementById('timeCurrent');
         const timeDurationEl = document.getElementById('timeDuration');
         const volumeSlider = document.getElementById('volumeSlider');
-        const volumeBtn = document.getElementById('volumeBtn');
         const speedToggleBtn = document.getElementById('speedToggleBtn');
         const waveformCanvas = document.getElementById('waveformCanvas');
         const waveformBox = document.getElementById('waveformBox');
@@ -2528,7 +2821,6 @@
         const totalBars = 64;
         const waveHeights = [];
         for (let i = 0; i < totalBars; i++) {
-            const centerDist = Math.abs(i - totalBars / 2) / (totalBars / 2);
             const base = Math.sin((i / totalBars) * Math.PI) * 0.75 + 0.25;
             const noise = ((Math.sin(i * 1.7) + Math.cos(i * 3.3)) * 0.2 + 0.3);
             waveHeights.push(Math.max(0.12, Math.min(1.0, base * noise)));
@@ -2563,7 +2855,7 @@
                 sourceNode.connect(analyser);
                 analyser.connect(audioCtx.destination);
             } catch (e) {
-                console.log('Web Audio context simulation fallback enabled:', e);
+                console.log('Web Audio context simulated fallback mode:', e);
             }
         }
 
@@ -2859,7 +3151,7 @@
                 spreadCard.style.opacity = '1';
                 spreadCard.style.transform = 'scale(1)';
                 lucide.createIcons();
-            }, 200);
+            }, 180);
         }
 
         function openLightbox() {
@@ -2882,6 +3174,68 @@
             document.body.style.overflow = '';
         }
 
+        /* ==========================================================================
+           5. МОДАЛЬНОЕ ОКНО ЗАКАЗА (CHECKOUT SHEET)
+           ========================================================================== */
+        function openOrderModal(formatName, price) {
+            const modal = document.getElementById('orderModal');
+            document.getElementById('modalFormatTitle').textContent = formatName;
+            document.getElementById('modalFormatPrice').textContent = price;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeOrderModal(e) {
+            if (e.target.closest('.modal-card') && !e.target.closest('.modal-close-btn')) return;
+            const modal = document.getElementById('orderModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitOrderBtn');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span>Обработка Apple Pay...</span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                alert('Спасибо за заказ! Подтверждение и ссылка на получение книги отправлены на ваш e-mail.');
+                btn.innerHTML = originalContent;
+                btn.disabled = false;
+                const modal = document.getElementById('orderModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                document.getElementById('orderForm').reset();
+            }, 1200);
+        }
+
+        /* ==========================================================================
+           6. СИНХРОНИЗАЦИЯ МОБИЛЬНОГО ТАБ-БАРА ПРИ СКРОЛЛЕ
+           ========================================================================== */
+        const sections = ['about', 'timeline', 'audio-teaser', 'book-preview', 'buy'];
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = 'about';
+            sections.forEach(secId => {
+                const el = document.getElementById(secId);
+                if (el) {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top <= 200 && rect.bottom >= 200) {
+                        current = secId;
+                    }
+                }
+            });
+
+            mobileNavItems.forEach(item => {
+                const target = item.getAttribute('data-section');
+                item.classList.toggle('active', target === current);
+            });
+        });
+
+        // Запуск canvas после загрузки страницы
         window.addEventListener('load', () => {
             resizeWaveformCanvas();
         });
