@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Стив Джобс — Официальная биография Уолтера Айзексона</title>
+    <meta name="description" content="Интерактивный сайт единственной официальной биографии Стива Джобса от Уолтера Айзексона: вехи жизни, аудио-тизер, превью разворотов книги и архивные кадры.">
     <!-- Подключение шрифтов Inter и Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
     <!-- Иконки Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -16,17 +17,21 @@
             --bg-main: #000000;
             --bg-surface: #0a0a0c;
             --bg-card: rgba(22, 22, 26, 0.7);
-            --bg-card-hover: rgba(32, 32, 38, 0.85);
+            --bg-card-hover: rgba(32, 32, 38, 0.88);
             --border-color: rgba(255, 255, 255, 0.1);
-            --border-glow: rgba(255, 255, 255, 0.25);
+            --border-glow: rgba(255, 255, 255, 0.28);
             --text-primary: #f5f5f7;
             --text-secondary: #86868b;
             --accent-silver: #e5e5ea;
             --accent-blue: #2997ff;
+            --accent-blue-glow: rgba(41, 151, 255, 0.25);
             --gradient-apple: linear-gradient(135deg, #ffffff 0%, #86868b 100%);
             --gradient-glow: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
-            --radius-lg: 18px;
-            --radius-xl: 28px;
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 30px;
+            --transition-apple: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -36,11 +41,16 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-color: var(--bg-main);
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Атмосферное фоновое свечение */
@@ -55,7 +65,8 @@
             z-index: -1;
             background: 
                 radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 40%, rgba(41, 151, 255, 0.05) 0%, transparent 40%);
+                radial-gradient(circle at 80% 40%, rgba(41, 151, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
         }
 
         /* Шапка */
@@ -63,15 +74,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 100;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background: rgba(0, 0, 0, 0.75);
+            z-index: 1000;
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            background: rgba(0, 0, 0, 0.78);
             border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             display: flex;
             align-items: center;
@@ -85,10 +97,15 @@
             gap: 12px;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #fff;
             text-decoration: none;
             letter-spacing: -0.01em;
+            transition: opacity 0.2s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.85;
         }
 
         .logo svg {
@@ -97,16 +114,17 @@
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
             transition: color 0.2s ease;
+            position: relative;
         }
 
         .nav-links a:hover {
@@ -117,6 +135,15 @@
             display: flex;
             gap: 12px;
             align-items: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
         }
 
         /* Кнопки */
@@ -131,7 +158,7 @@
             font-weight: 500;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.25s ease;
+            transition: var(--transition-apple);
             border: 1px solid transparent;
         }
 
@@ -144,6 +171,7 @@
         .btn-ghost:hover {
             background: rgba(255, 255, 255, 0.15);
             border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .btn-primary {
@@ -162,12 +190,13 @@
         /* Hero секция */
         .hero {
             padding: 160px 24px 100px;
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             gap: 60px;
             align-items: center;
+            position: relative;
         }
 
         .badge {
@@ -181,6 +210,11 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             margin-bottom: 24px;
+            backdrop-filter: blur(8px);
+        }
+
+        .badge i {
+            color: var(--accent-blue);
         }
 
         .hero h1 {
@@ -201,6 +235,7 @@
             margin-bottom: 36px;
             font-weight: 400;
             max-width: 540px;
+            line-height: 1.7;
         }
 
         .hero-buttons {
@@ -215,7 +250,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1200px;
+            perspective: 1400px;
             padding: 20px 0;
         }
 
@@ -358,15 +393,16 @@
 
         /* Статистика */
         .stats-bar {
-            border-y: 1px solid var(--border-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             background: rgba(10, 10, 12, 0.6);
             backdrop-filter: blur(12px);
-            padding: 40px 24px;
-            margin-bottom: 80px;
+            padding: 44px 24px;
+            margin-bottom: 60px;
         }
 
         .stats-container {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -376,22 +412,24 @@
 
         .stat-item h3 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 4px;
+            letter-spacing: -0.02em;
         }
 
         .stat-item p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
-        /* Bento Grid Темы */
+        /* Общие отступы секций */
         .section-padding {
-            padding: 80px 24px;
-            max-width: 1200px;
+            padding: 90px 24px;
+            max-width: 1240px;
             margin: 0 auto;
+            position: relative;
         }
 
         .section-header {
@@ -401,19 +439,990 @@
 
         .section-header h2 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 800;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.025em;
             margin-bottom: 16px;
+            background: var(--gradient-apple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .section-header p {
             color: var(--text-secondary);
             font-size: 1.1rem;
-            max-width: 600px;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ==========================================================================
+           1. ИНТЕРАКТИВНЫЙ ТАЙМЛАЙН ВЕХ
+           ========================================================================== */
+        .timeline-section {
+            position: relative;
+        }
+
+        .timeline-nav-wrapper {
+            position: relative;
+            margin-bottom: 40px;
+            padding: 10px 0 20px;
+        }
+
+        .timeline-nav-track {
+            position: absolute;
+            top: 36px;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .timeline-nav-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #2997ff, #ffffff);
+            transition: width var(--transition-apple);
+            box-shadow: 0 0 12px rgba(41, 151, 255, 0.6);
+        }
+
+        .timeline-buttons-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .timeline-year-btn {
+            background: none;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            padding: 8px 12px;
+            transition: var(--transition-apple);
+            color: var(--text-secondary);
+            outline: none;
+        }
+
+        .timeline-node-dot {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #0d0d11;
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            transition: var(--transition-apple);
+            position: relative;
+        }
+
+        .timeline-node-dot::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            transition: var(--transition-apple);
+        }
+
+        .timeline-year-text {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            transition: var(--transition-apple);
+        }
+
+        .timeline-year-label {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition-apple);
+        }
+
+        .timeline-year-btn:hover .timeline-node-dot {
+            border-color: #ffffff;
+            transform: scale(1.15);
+        }
+
+        .timeline-year-btn:hover .timeline-year-text {
+            color: #ffffff;
+        }
+
+        .timeline-year-btn.active .timeline-node-dot {
+            background: #2997ff;
+            border-color: #ffffff;
+            transform: scale(1.3);
+            box-shadow: 0 0 20px rgba(41, 151, 255, 0.8);
+        }
+
+        .timeline-year-btn.active .timeline-node-dot::after {
+            background: #ffffff;
+            width: 8px;
+            height: 8px;
+        }
+
+        .timeline-year-btn.active .timeline-year-text {
+            color: #ffffff;
+            text-shadow: 0 0 16px rgba(255, 255, 255, 0.5);
+        }
+
+        .timeline-year-btn.active .timeline-year-label {
+            color: var(--accent-blue);
+        }
+
+        .timeline-stage {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            backdrop-filter: blur(20px);
+            padding: 44px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            min-height: 480px;
+        }
+
+        .timeline-content-panel {
+            display: none;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 44px;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-content-panel.active {
+            display: grid;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-image-box {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            aspect-ratio: 16 / 10;
+            background: #000;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+        }
+
+        .timeline-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.8s ease;
+        }
+
+        .timeline-image-box:hover img {
+            transform: scale(1.04);
+        }
+
+        .timeline-image-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .timeline-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-info-box {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .timeline-era-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .timeline-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+        }
+
+        .timeline-fact-text {
+            color: #d1d1d6;
+            font-size: 1.02rem;
+            line-height: 1.68;
+        }
+
+        .timeline-quote-box {
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: 16px 20px;
+            margin: 6px 0;
+        }
+
+        .timeline-quote-box p {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #f5f5f7;
+            line-height: 1.6;
+        }
+
+        .timeline-metrics-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .timeline-metric-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-metric-pill strong {
+            color: #ffffff;
+        }
+
+        .timeline-controls-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .timeline-arrow-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 18px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-apple);
+        }
+
+        .timeline-arrow-btn:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .timeline-arrow-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .timeline-step-indicator {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================================================
+           2. АУДИО-ПЛЕЕР ТИЗЕРА В СТИЛЕ APPLE
+           ========================================================================== */
+        .teaser-section {
+            position: relative;
+        }
+
+        .player-card {
+            background: linear-gradient(135deg, rgba(22, 22, 28, 0.85) 0%, rgba(12, 12, 16, 0.95) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 44px;
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.7);
+        }
+
+        .player-glow-backdrop {
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 120%;
+            background: radial-gradient(circle, rgba(41, 151, 255, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 0.8s ease;
+            opacity: 0.4;
+        }
+
+        .player-card.is-playing .player-glow-backdrop {
+            opacity: 0.9;
+            animation: playerPulse 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes playerPulse {
+            0% { transform: translateX(-50%) scale(0.95); opacity: 0.7; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+        }
+
+        .player-header {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 20px;
+        }
+
+        .player-track-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            letter-spacing: 0.04em;
+        }
+
+        .live-status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #86868b;
+            transition: var(--transition-apple);
+        }
+
+        .player-card.is-playing .live-status-dot {
+            background: #30d158;
+            box-shadow: 0 0 10px #30d158;
+            animation: blinkDot 1.4s infinite ease-in-out;
+        }
+
+        @keyframes blinkDot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .player-format-badge {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .player-main-grid {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .player-play-btn {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: none;
+            color: #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+            transition: var(--transition-apple);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .player-play-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 36px rgba(255, 255, 255, 0.4);
+            background: #f5f5f7;
+        }
+
+        .player-play-btn:active {
+            transform: scale(0.96);
+        }
+
+        .player-play-btn svg {
+            width: 28px;
+            height: 28px;
+            transition: var(--transition-apple);
+        }
+
+        .player-center-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .player-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .player-title-row h4 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        .player-title-row span {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+        }
+
+        .waveform-container {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #waveformCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .waveform-hover-seek {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
+
+        .waveform-tooltip {
+            position: absolute;
+            top: 6px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--border-color);
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            color: #ffffff;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateX(-50%);
+            transition: opacity 0.15s ease;
+        }
+
+        .waveform-container:hover .waveform-hover-seek,
+        .waveform-container:hover .waveform-tooltip {
+            opacity: 1;
+        }
+
+        .player-controls-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .player-time-stats {
+            font-size: 0.88rem;
+            font-variant-numeric: tabular-nums;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .player-time-current {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .player-utility-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .player-skip-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.8rem;
+            transition: color 0.2s ease;
+        }
+
+        .player-skip-btn:hover {
+            color: #ffffff;
+        }
+
+        .player-speed-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-apple);
+        }
+
+        .player-speed-btn:hover {
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .player-volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .player-volume-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease;
+        }
+
+        .player-volume-btn:hover {
+            color: #ffffff;
+        }
+
+        .volume-range-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+        }
+
+        .volume-range-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.3);
+        }
+
+        .player-transcript-box {
+            position: relative;
+            z-index: 1;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .transcript-column {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .transcript-lang-tag {
+            font-size: 0.72rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .transcript-text {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: #d1d1d6;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+
+        .player-card.is-playing .transcript-column {
+            border-color: rgba(41, 151, 255, 0.3);
+        }
+
+        .player-card.is-playing .transcript-text {
+            color: #ffffff;
+        }
+
+        /* ==========================================================================
+           3. ПРЕВЬЮ СТРАНИЦ КНИГИ (FLIPBOOK / SLIDER)
+           ========================================================================== */
+        .preview-section {
+            position: relative;
+        }
+
+        .flipbook-container {
+            position: relative;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
+        .book-spread-card {
+            background: #0e0e12;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            position: relative;
+            min-height: 520px;
+            transition: transform var(--transition-apple), opacity var(--transition-apple);
+        }
+
+        .book-spread-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 24px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, 
+                rgba(0, 0, 0, 0.6) 0%, 
+                rgba(255, 255, 255, 0.04) 48%, 
+                rgba(0, 0, 0, 0.8) 52%, 
+                rgba(0, 0, 0, 0.5) 100%);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .spread-page-left {
+            position: relative;
+            background: #08080a;
+            padding: 36px 32px 36px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-right: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .spread-page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+
+        .spread-photo-frame {
+            position: relative;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #000;
+            aspect-ratio: 16 / 10;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        .spread-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.7s ease;
+        }
+
+        .spread-photo-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        .spread-zoom-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 0.72rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .spread-photo-frame:hover .spread-zoom-hint {
+            opacity: 1;
+        }
+
+        .spread-caption {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        .spread-page-footer {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .spread-page-right {
+            background: #111116;
+            padding: 36px 40px 36px 36px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .spread-chapter-label {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--accent-blue);
+            margin-bottom: 4px;
+        }
+
+        .spread-chapter-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            line-height: 1.25;
+        }
+
+        .spread-book-text {
+            font-family: 'Newsreader', serif;
+            font-size: 1.12rem;
+            line-height: 1.75;
+            color: #e5e5ea;
+            text-align: justify;
+        }
+
+        .spread-book-text .dropcap {
+            float: left;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.4rem;
+            line-height: 0.85;
+            padding-top: 4px;
+            padding-right: 12px;
+            padding-bottom: 2px;
+            color: #ffffff;
+            font-weight: 800;
+        }
+
+        .spread-carousel-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 36px;
+            padding: 0 10px;
+        }
+
+        .spread-arrow-btn {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-apple);
+        }
+
+        .spread-arrow-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: scale(1.08);
+        }
+
+        .spread-indicators-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spread-dot {
+            width: 32px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-apple);
+        }
+
+        .spread-dot.active {
+            background: #ffffff;
+            width: 48px;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+        }
+
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(24px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+            object-fit: contain;
+        }
+
+        .lightbox-caption {
+            margin-top: 16px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .lightbox-close-btn {
+            position: absolute;
+            top: -48px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border-color);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-apple);
+        }
+
+        .lightbox-close-btn:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+
+        /* ==========================================================================
+           BENTO GRID И ДРУГИЕ СЕКЦИИ (С УЛУЧШЕНИЯМИ)
+           ========================================================================== */
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -424,17 +1433,34 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 32px;
-            transition: all 0.3s ease;
+            padding: 34px;
+            transition: var(--transition-apple);
             backdrop-filter: blur(12px);
             position: relative;
             overflow: hidden;
         }
 
+        .bento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bento-card:hover::before {
+            opacity: 1;
+        }
+
         .bento-card:hover {
             border-color: var(--border-glow);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
             background: var(--bg-card-hover);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
         }
 
         .bento-card.wide {
@@ -442,33 +1468,41 @@
         }
 
         .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
             background: rgba(255, 255, 255, 0.08);
             color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .bento-card:hover .card-icon {
+            transform: scale(1.08);
+            background: rgba(41, 151, 255, 0.15);
+            color: var(--accent-blue);
         }
 
         .bento-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 12px;
             color: #fff;
+            letter-spacing: -0.01em;
         }
 
         .bento-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.96rem;
+            line-height: 1.65;
         }
 
         /* Об авторе */
         .author-section {
-            background: rgba(18, 18, 22, 0.6);
+            background: rgba(18, 18, 22, 0.65);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-xl);
             padding: 60px 48px;
@@ -477,14 +1511,16 @@
             gap: 48px;
             align-items: center;
             margin-top: 40px;
+            backdrop-filter: blur(14px);
         }
 
         .author-avatar {
             width: 100%;
-            height: 320px;
+            height: 340px;
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-color);
             overflow: hidden;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
         }
 
         .author-avatar img {
@@ -493,25 +1529,32 @@
             object-fit: cover;
             object-position: center 20%;
             display: block;
+            transition: transform 0.7s ease;
+        }
+
+        .author-section:hover .author-avatar img {
+            transform: scale(1.03);
         }
 
         .author-info h3 {
-            font-size: 2rem;
+            font-size: 2.1rem;
             font-weight: 800;
             margin-bottom: 8px;
+            letter-spacing: -0.02em;
         }
 
         .author-subtitle {
             color: var(--accent-blue);
             font-size: 0.95rem;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             font-weight: 500;
         }
 
         .author-info p {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 1.02rem;
             margin-bottom: 16px;
+            line-height: 1.65;
         }
 
         /* Цитаты */
@@ -526,27 +1569,34 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 32px;
+            padding: 34px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: var(--transition-apple);
+        }
+
+        .quote-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
         }
 
         .quote-text {
-            font-size: 1.1rem;
+            font-size: 1.12rem;
             font-style: italic;
             color: #e5e5ea;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            margin-bottom: 22px;
+            line-height: 1.65;
         }
 
         .quote-author {
-            font-size: 0.85rem;
+            font-size: 0.86rem;
             color: var(--text-secondary);
             font-style: normal;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         /* Форматы и Покупка */
@@ -561,17 +1611,23 @@
             background: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
-            padding: 36px 28px;
+            padding: 38px 28px;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: all 0.3s ease;
+            transition: var(--transition-apple);
+        }
+
+        .format-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-glow);
         }
 
         .format-card.featured {
             border-color: #ffffff;
-            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(22,22,26,0.8) 100%);
+            background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(22,22,26,0.85) 100%);
+            box-shadow: 0 16px 48px rgba(255, 255, 255, 0.08);
         }
 
         .format-icon {
@@ -587,28 +1643,31 @@
         }
 
         .format-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             margin-bottom: 8px;
+            font-weight: 700;
         }
 
         .format-card p {
             color: var(--text-secondary);
             font-size: 0.9rem;
             margin-bottom: 24px;
+            line-height: 1.5;
         }
 
         .price-tag {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 800;
             margin-bottom: 24px;
             color: #fff;
+            letter-spacing: -0.02em;
         }
 
         /* Футер */
         footer {
             border-top: 1px solid var(--border-color);
             padding: 60px 24px 40px;
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 0 auto;
         }
 
@@ -618,26 +1677,88 @@
             align-items: center;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        /* Адаптивность */
-        @media (max-width: 992px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
+        /* ==========================================================================
+           4. АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (SCROLL REVEAL)
+           ========================================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ==========================================================================
+           АДАПТИВНОСТЬ
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 120px; }
             .hero p { margin-left: auto; margin-right: auto; }
             .hero-buttons { justify-content: center; }
+
+            .timeline-content-panel { grid-template-columns: 1fr; }
+            .book-spread-card { grid-template-columns: 1fr; }
+            .book-spread-card::after { display: none; }
+            .spread-page-left { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 28px; }
+            .spread-page-right { padding: 28px; }
+
+            .player-main-grid { grid-template-columns: 1fr; text-align: center; }
+            .player-play-btn { margin: 0 auto; }
+            .player-title-row { justify-content: center; text-align: center; }
+            .player-controls-bottom { justify-content: center; }
+            .player-transcript-box { grid-template-columns: 1fr; }
+
             .stats-container { grid-template-columns: repeat(2, 1fr); }
             .bento-grid { grid-template-columns: 1fr; }
             .bento-card.wide { grid-column: span 1; }
-            .author-section { grid-template-columns: 1fr; text-align: center; }
+            .author-section { grid-template-columns: 1fr; text-align: center; padding: 36px 24px; }
             .quotes-grid { grid-template-columns: 1fr; }
             .formats-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
+        }
+
+        @media (max-width: 640px) {
+            .timeline-buttons-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .timeline-nav-track { display: none; }
+            .timeline-stage { padding: 24px 16px; }
+            .player-card { padding: 24px 16px; }
+            .stat-item h3 { font-size: 2.1rem; }
+            .section-header h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
     <div class="ambient-glow"></div>
+
+    <!-- Аудио-элемент с оригинальной записью Стива Джобса -->
+    <audio id="steveJobsAudio" preload="metadata">
+        <source src="audio/steve_jobs_teaser.webm" type="audio/webm">
+        <source src="audio/steve_jobs_teaser.m4a" type="audio/mp4">
+    </audio>
 
     <!-- Шапка -->
     <header>
@@ -651,8 +1772,11 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#about">О книге</a></li>
+                <li><a href="#timeline">Вехи жизни</a></li>
+                <li><a href="#audio-teaser">Аудио-тизер</a></li>
+                <li><a href="#book-preview">Развороты страниц</a></li>
                 <li><a href="#themes">Ключевые идеи</a></li>
-                <li><a href="#author">Уолтер Айзексон</a></li>
+                <li><a href="#author">Автор</a></li>
                 <li><a href="#quotes">Цитаты</a></li>
                 <li><a href="#buy">Купить</a></li>
             </ul>
@@ -664,7 +1788,7 @@
 
     <!-- Hero Секция -->
     <section class="hero" id="about">
-        <div>
+        <div class="reveal">
             <div class="badge">
                 <i data-lucide="book-open" style="width: 14px;"></i>
                 <span>Единственная официальная биография</span>
@@ -676,15 +1800,15 @@
                     <span>Выбрать формат</span>
                     <i data-lucide="arrow-right"></i>
                 </a>
-                <a href="#themes" class="btn btn-ghost">
-                    <i data-lucide="sparkles"></i>
-                    <span>Узнать ключевые темы</span>
+                <a href="#timeline" class="btn btn-ghost">
+                    <i data-lucide="history"></i>
+                    <span>Ключевые вехи</span>
                 </a>
             </div>
         </div>
 
         <!-- 3D Обложка -->
-        <div class="book-wrapper">
+        <div class="book-wrapper reveal reveal-delay-2">
             <div class="book-3d">
                 <!-- Лицевая грань -->
                 <div class="side front">
@@ -696,7 +1820,6 @@
                         <h2 class="fb-title">STEVE JOBS</h2>
                         <span class="fb-sub">Официальная биография</span>
                         <div class="fb-icon">
-                            <!-- Оригинальное яблоко Apple на обложке -->
                             <svg viewBox="0 0 24 24" width="70" height="70" fill="currentColor">
                                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.13-1.96.99-3.1-.97.04-2.16.65-2.85 1.46-.62.72-1.16 1.88-1.01 3 1.08.08 2.2-.54 2.87-1.36z"/>
                             </svg>
@@ -723,7 +1846,7 @@
     </section>
 
     <!-- Полоса статистики -->
-    <div class="stats-bar">
+    <div class="stats-bar reveal">
         <div class="stats-container">
             <div class="stat-item">
                 <h3>40+</h3>
@@ -739,35 +1862,441 @@
             </div>
             <div class="stat-item">
                 <h3>#1</h3>
-                <p>Бестселлер по версии New York Times</p>
+                <p>Бестселлер New York Times</p>
             </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         СЕКЦИЯ 1: ИНТЕРАКТИВНЫЙ ТАЙМЛАЙН ВЕХ
+         ========================================================================== -->
+    <section class="section-padding timeline-section" id="timeline">
+        <div class="section-header reveal">
+            <div class="badge">
+                <i data-lucide="milestone"></i>
+                <span>Интерактивная хроника</span>
+            </div>
+            <h2>Ключевые вехи великой истории</h2>
+            <p>Четыре поворотных момента из книги, определивших судьбу Стива Джобса и навсегда изменивших цифровую цивилизацию</p>
+        </div>
+
+        <div class="reveal">
+            <!-- Навигационная рельса с годами -->
+            <div class="timeline-nav-wrapper">
+                <div class="timeline-nav-track">
+                    <div class="timeline-nav-progress" id="timelineProgressBar" style="width: 0%;"></div>
+                </div>
+                <div class="timeline-buttons-grid">
+                    <button class="timeline-year-btn active" data-year="1976" onclick="selectTimelineYear(0)">
+                        <div class="timeline-node-dot"></div>
+                        <span class="timeline-year-text">1976</span>
+                        <span class="timeline-year-label">Основание Apple</span>
+                    </button>
+                    <button class="timeline-year-btn" data-year="1985" onclick="selectTimelineYear(1)">
+                        <div class="timeline-node-dot"></div>
+                        <span class="timeline-year-text">1985</span>
+                        <span class="timeline-year-label">Изгнание</span>
+                    </button>
+                    <button class="timeline-year-btn" data-year="1997" onclick="selectTimelineYear(2)">
+                        <div class="timeline-node-dot"></div>
+                        <span class="timeline-year-text">1997</span>
+                        <span class="timeline-year-label">Возвращение</span>
+                    </button>
+                    <button class="timeline-year-btn" data-year="2007" onclick="selectTimelineYear(3)">
+                        <div class="timeline-node-dot"></div>
+                        <span class="timeline-year-text">2007</span>
+                        <span class="timeline-year-label">Презентация iPhone</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Интерактивная сцена карточки вехи -->
+            <div class="timeline-stage">
+                <!-- Веха 1: 1976 -->
+                <div class="timeline-content-panel active" id="timelinePanel-0">
+                    <div class="timeline-image-box">
+                        <img src="images/archive_garage_1976.jpg" alt="Гараж в Лос-Альтосе 1976">
+                        <span class="timeline-image-badge">Архив Apple I • 1976</span>
+                        <div class="timeline-image-caption">Стив Джобс и Стив Возняк за пайкой первых плат Apple I в гараже на Крист-драйв</div>
+                    </div>
+                    <div class="timeline-info-box">
+                        <div class="timeline-era-tag">
+                            <i data-lucide="wrench"></i>
+                            <span>Гаражная эра • Лос-Альтос, Калифорния</span>
+                        </div>
+                        <h3 class="timeline-title">1976 — Рождение Apple в гараже родителей</h3>
+                        <p class="timeline-fact-text">
+                            1 апреля 1976 года Джобс, Возняк и Рон Уэйн подписали соглашение о партнерстве. Чтобы достать стартовые <strong>$1,300</strong>, Джобс продал свой потрепанный микроавтобус Volkswagen, а Возняк — программируемый калькулятор HP-65. В спальне и гараже дома они вручную распаяли первые 50 плат Apple I для местного магазина Byte Shop.
+                        </p>
+                        <div class="timeline-quote-box">
+                            <p>«Мы начали в гараже моих родителей вместе с Возом, когда мне был 21 год. Мы работали до изнеможения, и за десять лет Apple выросла в компанию стоимостью два миллиарда долларов.»</p>
+                        </div>
+                        <div class="timeline-metrics-row">
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="dollar-sign" style="width: 14px;"></i>
+                                <span>Капитал: <strong>$1,300</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="cpu" style="width: 14px;"></i>
+                                <span>Процессор: <strong>MOS 6502 (1 МГц)</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="users" style="width: 14px;"></i>
+                                <span>Команда: <strong>2 основателя</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Веха 2: 1985 -->
+                <div class="timeline-content-panel" id="timelinePanel-1">
+                    <div class="timeline-image-box">
+                        <img src="images/archive_exile_1985.jpg" alt="Изгнание и основание NeXT 1985">
+                        <span class="timeline-image-badge">Изгнание • NeXT Studio • 1985</span>
+                        <div class="timeline-image-caption">Стив Джобс у доски с архитектурой новой ОС после вынужденного ухода из Apple</div>
+                    </div>
+                    <div class="timeline-info-box">
+                        <div class="timeline-era-tag">
+                            <i data-lucide="flame"></i>
+                            <span>Кризис и перерождение • NeXT & Pixar</span>
+                        </div>
+                        <h3 class="timeline-title">1985 — Изгнание из собственной компании</h3>
+                        <p class="timeline-fact-text">
+                            После драматического конфликта с советом директоров и генеральным директором Джоном Скалли 30-летнего Джобса отстранили от руководства проектом Macintosh. Опустошенный, Стив подал в отставку, продал все свои акции Apple кроме одной (чтобы получать годовые отчеты) и основал NeXT, а также выкупил за $10 млн анимационный отдел Lucasfilm, превратив его в великую студию Pixar.
+                        </p>
+                        <div class="timeline-quote-box">
+                            <p>«Увольнение из Apple стало лучшим событием, которое могло со мной произойти. Тяжесть успеха сменилась легкостью новичка. Это освободило меня и открыло один из самых творческих периодов моей жизни.»</p>
+                        </div>
+                        <div class="timeline-metrics-row">
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="box" style="width: 14px;"></i>
+                                <span>Компания: <strong>NeXT Computer</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="film" style="width: 14px;"></i>
+                                <span>Покупка Pixar: <strong>$10 000 000</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="shield-alert" style="width: 14px;"></i>
+                                <span>Акции Apple: <strong>сохранил 1 шт.</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Веха 3: 1997 -->
+                <div class="timeline-content-panel" id="timelinePanel-2">
+                    <div class="timeline-image-box">
+                        <img src="images/archive_think_different_1997.jpg" alt="Возвращение Стива Джобса 1997">
+                        <span class="timeline-image-badge">Возвращение • Think Different • 1997</span>
+                        <div class="timeline-image-caption">Стив Джобс на съемках манифеста «Think Different» после триумфального возвращения</div>
+                    </div>
+                    <div class="timeline-info-box">
+                        <div class="timeline-era-tag">
+                            <i data-lucide="sparkles"></i>
+                            <span>Спасение компании • Эпоха iCEO</span>
+                        </div>
+                        <h3 class="timeline-title">1997 — Возвращение за 90 дней до краха</h3>
+                        <p class="timeline-fact-text">
+                            В 1997 году Apple находилась на грани банкротства с запасом средств всего на 90 дней. Совет директоров купил NeXT за $429 млн, вернув Джобса. Стив без колебаний закрыл 70% продуктов, сократил неэффективные линейки компьютеров до матрицы 2x2, договорился об исторических $150 млн инвестиций от Microsoft и запустил легендарную кампанию «Think Different».
+                        </p>
+                        <div class="timeline-quote-box">
+                            <p>«Я вернулся не ради денег. Когда мне было 25 лет, мое состояние оценивалось в 100 миллионов, но я делал это не ради богатства. Я хотел вернуть великой компании её потерянную душу.»</p>
+                        </div>
+                        <div class="timeline-metrics-row">
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="clock" style="width: 14px;"></i>
+                                <span>До банкротства: <strong>90 дней</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="scissors" style="width: 14px;"></i>
+                                <span>Закрыто: <strong>70% проектов</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="layout-grid" style="width: 14px;"></i>
+                                <span>Фокус: <strong>матрица 2x2</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Веха 4: 2007 -->
+                <div class="timeline-content-panel" id="timelinePanel-3">
+                    <div class="timeline-image-box">
+                        <img src="images/archive_iphone_2007.jpg" alt="Презентация iPhone 2007">
+                        <span class="timeline-image-badge">Macworld SF • 9 января 2007</span>
+                        <div class="timeline-image-caption">Стив Джобс держит первый iPhone на сцене Moscone Center в Сан-Франциско</div>
+                    </div>
+                    <div class="timeline-info-box">
+                        <div class="timeline-era-tag">
+                            <i data-lucide="smartphone"></i>
+                            <span>Революция мобильного мира • iPhone</span>
+                        </div>
+                        <h3 class="timeline-title">2007 — «Сегодня Apple изобретает телефон заново»</h3>
+                        <p class="timeline-fact-text">
+                            9 января 2007 года Джобс произнес историческую фразу: <em>«Широкоэкранный iPod с сенсорным управлением... Революционный мобильный телефон... Прорывной интернет-коммуникатор. Это не три отдельных устройства, это одно!»</em> iPhone с экраном Multi-Touch и закаленным стеклом Gorilla Glass перевернул индустрию и стал самым коммерчески успешным потребительским продуктом в истории.
+                        </p>
+                        <div class="timeline-quote-box">
+                            <p>«Время от времени появляется революционный продукт, который меняет всё. Если за карьеру вам посчастливится работать хотя бы над одним таким — вы уже невероятно удачливы.»</p>
+                        </div>
+                        <div class="timeline-metrics-row">
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="layers" style="width: 14px;"></i>
+                                <span>Формула: <strong>3 в 1 устройстве</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="touchpad" style="width: 14px;"></i>
+                                <span>Инновация: <strong>Multi-Touch без стилуса</strong></span>
+                            </div>
+                            <div class="timeline-metric-pill">
+                                <i data-lucide="award" style="width: 14px;"></i>
+                                <span>Продажи 1-го уик-энда: <strong>270 000 шт.</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Нижние кнопки листания таймлайна -->
+                <div class="timeline-controls-row">
+                    <button class="timeline-arrow-btn" id="prevTimelineBtn" onclick="stepTimeline(-1)" disabled>
+                        <i data-lucide="chevron-left"></i>
+                        <span>Предыдущая веха</span>
+                    </button>
+                    <div class="timeline-step-indicator" id="timelineStepIndicator">
+                        Веха 1 из 4
+                    </div>
+                    <button class="timeline-arrow-btn" id="nextTimelineBtn" onclick="stepTimeline(1)">
+                        <span>Следующая веха</span>
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         СЕКЦИЯ 2: АУДИО-ПЛЕЕР ТИЗЕРА В ТЕМНОЙ ТЕМЕ APPLE
+         ========================================================================== -->
+    <section class="section-padding teaser-section" id="audio-teaser">
+        <div class="section-header reveal">
+            <div class="badge">
+                <i data-lucide="mic"></i>
+                <span>Голос создателя</span>
+            </div>
+            <h2>Аудио-тизер: оригинальный голос Стива</h2>
+            <p>Послушайте архивную запись 1997 года — легендарное послание Стива Джобса бунтарям и безумцам в фирменном минималистичном плеере</p>
+        </div>
+
+        <div class="reveal">
+            <div class="player-card" id="playerCard">
+                <div class="player-glow-backdrop"></div>
+
+                <!-- Верхняя строка метаданных -->
+                <div class="player-header">
+                    <div class="player-track-badge">
+                        <span class="live-status-dot"></span>
+                        <span id="playerStatusText">АРХИВНАЯ ЗАПИСЬ • ОЗВУЧИВАНИЕ СТИВА ДЖОБСА (1997)</span>
+                    </div>
+                    <div class="player-format-badge">
+                        44.1 kHz • Hi-Res Audio
+                    </div>
+                </div>
+
+                <!-- Главная сетка управления -->
+                <div class="player-main-grid">
+                    <!-- Кнопка Play / Pause -->
+                    <button class="player-play-btn" id="mainPlayBtn" title="Воспроизвести цитату Стива Джобса" aria-label="Воспроизведение">
+                        <i data-lucide="play" id="playIcon"></i>
+                    </button>
+
+                    <div class="player-center-content">
+                        <!-- Название трека -->
+                        <div class="player-title-row">
+                            <h4>Манифест «Think Different» (Here’s to the Crazy Ones)</h4>
+                            <span>Купертино, 1997 • Монолог Стива Джобса</span>
+                        </div>
+
+                        <!-- Интерактивная звуковая волна (Canvas Waveform) -->
+                        <div class="waveform-container" id="waveformBox" title="Нажмите для перехода в нужную секунду">
+                            <canvas id="waveformCanvas"></canvas>
+                            <div class="waveform-hover-seek" id="waveformHoverLine"></div>
+                            <div class="waveform-tooltip" id="waveformTooltip">00:00</div>
+                        </div>
+
+                        <!-- Нижняя строка: Время и Утилиты -->
+                        <div class="player-controls-bottom">
+                            <div class="player-time-stats">
+                                <span class="player-time-current" id="timeCurrent">00:00</span>
+                                <span>/</span>
+                                <span id="timeDuration">01:00</span>
+                            </div>
+
+                            <div class="player-utility-group">
+                                <button class="player-skip-btn" onclick="skipAudio(-5)" title="Назад на 5 секунд">
+                                    <i data-lucide="rotate-ccw" style="width: 16px;"></i>
+                                    <span>-5 сек</span>
+                                </button>
+                                <button class="player-skip-btn" onclick="skipAudio(5)" title="Вперед на 5 секунд">
+                                    <span>+5 сек</span>
+                                    <i data-lucide="rotate-cw" style="width: 16px;"></i>
+                                </button>
+
+                                <button class="player-speed-btn" id="speedToggleBtn" onclick="togglePlaybackRate()" title="Скорость воспроизведения">
+                                    1.0x
+                                </button>
+
+                                <div class="player-volume-control">
+                                    <button class="player-volume-btn" id="volumeBtn" onclick="toggleMute()" title="Без звука / Включить звук">
+                                        <i data-lucide="volume-2" id="volumeIcon" style="width: 18px;"></i>
+                                    </button>
+                                    <input type="range" class="volume-range-slider" id="volumeSlider" min="0" max="1" step="0.05" value="1" title="Громкость">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Билингвальный текст цитаты синхронно -->
+                <div class="player-transcript-box">
+                    <div class="transcript-column">
+                        <span class="transcript-lang-tag">Русский перевод</span>
+                        <p class="transcript-text">
+                            «Хвала безумцам. Бунтарям. Смутьянам. Неудачникам. Тем, кто всегда некстати и невпопад. Тем, кто видит мир иначе. Они не соблюдают правила. Они не признают статус-кво. Их можно цитировать, спорить с ними, прославлять или проклинать их. Но единственное, чего нельзя — это игнорировать их. Потому что они меняют мир... Ведь только безумец верит, что ему под силу изменить мир, — и потому меняет его.»
+                        </p>
+                    </div>
+                    <div class="transcript-column">
+                        <span class="transcript-lang-tag">Original English Quote</span>
+                        <p class="transcript-text">
+                            “Here’s to the crazy ones. The misfits. The rebels. The troublemakers. The round pegs in the square holes. The ones who see things differently. They’re not fond of rules. And they have no respect for the status quo. You can quote them, disagree with them, glorify or vilify them. About the only thing you can’t do is ignore them. Because they change things... Because the people who are crazy enough to think they can change the world, are the ones who do.”
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         СЕКЦИЯ 3: ПРЕВЬЮ СТРАНИЦ КНИГИ (FLIPBOOK / SLIDER)
+         ========================================================================== -->
+    <section class="section-padding preview-section" id="book-preview">
+        <div class="section-header reveal">
+            <div class="badge">
+                <i data-lucide="book-marked"></i>
+                <span>Интерактивный просмотр</span>
+            </div>
+            <h2>Развороты страниц и архивные кадры</h2>
+            <p>Загляните под переплет книги: подлинные архивные снимки из личной коллекции Стива Джобса и оригинальные отрывки глав</p>
+        </div>
+
+        <div class="flipbook-container reveal">
+            <!-- Разворот книги -->
+            <div class="book-spread-card" id="bookSpreadCard">
+                <!-- Левая полоса (Архивная фотография) -->
+                <div class="spread-page-left">
+                    <div>
+                        <div class="spread-page-header">
+                            <span id="spreadLeftHeader">АРХИВ WALTER ISAACSON</span>
+                            <span id="spreadEraBadge">КАЛИФОРНИЯ, 1976</span>
+                        </div>
+                        <div class="spread-photo-frame" onclick="openLightbox()" title="Нажмите для полноэкранного просмотра">
+                            <img id="spreadImage" src="images/archive_garage_1976.jpg" alt="Разворот книги">
+                            <div class="spread-zoom-hint">
+                                <i data-lucide="maximize-2" style="width: 14px;"></i>
+                                <span>Увеличить фото</span>
+                            </div>
+                        </div>
+                        <p class="spread-caption" id="spreadPhotoCaption">
+                            Рис. 5.1. Стив Возняк и Стив Джобс за столом в гараже родителей, собирающие плату Apple I с помощью ручного паяльника.
+                        </p>
+                    </div>
+                    <div class="spread-page-footer">
+                        <span>Иллюстрации к биографии</span>
+                        <span id="spreadLeftPageNum">Стр. 48</span>
+                    </div>
+                </div>
+
+                <!-- Правая полоса (Книжная страница с буквицей) -->
+                <div class="spread-page-right">
+                    <div>
+                        <div class="spread-page-header">
+                            <span id="spreadBookRunningHead">УОЛТЕР АЙЗЕКСОН • СТИВ ДЖОБС</span>
+                            <span id="spreadChapterRoman">ГЛАВА V</span>
+                        </div>
+                        <div class="spread-chapter-label" id="spreadChapterLabel">Глава 5</div>
+                        <h3 class="spread-chapter-title" id="spreadChapterTitle">Рождение Apple в гараже Лос-Альтоса</h3>
+                        <div class="spread-book-text" id="spreadBookText">
+                            <span class="dropcap" id="spreadDropCap">К</span>
+                            <span id="spreadMainText">
+                                огда Возняк завершил сборку печатной платы, он подключил её к клавиатуре и обычному телевизору. На экране замигал курсор. Это был священный момент: впервые в истории человечества печать на клавиатуре мгновенно вызывала появление символа на домашнем мониторе. Джобс смотрел на экран с расширенными зрачками. В отличие от Воза, видевшего в этом забавный инженерный фокус для клуба Homebrew Computer Club, Стив мгновенно осознал: перед ними будущее целой цивилизации. «Мы продадим это», — тихо сказал он. Так из запаха канифоли и детского микроавтобуса родилась корпорация Apple.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="spread-page-footer">
+                        <span id="spreadRightChapterNote">Часть I. Истоки гения</span>
+                        <span id="spreadRightPageNum">Стр. 49</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Управление каруселью разворотов -->
+            <div class="spread-carousel-nav">
+                <button class="spread-arrow-btn" onclick="stepSpread(-1)" title="Предыдущий разворот" aria-label="Предыдущий разворот">
+                    <i data-lucide="arrow-left"></i>
+                </button>
+
+                <div class="spread-indicators-group" id="spreadDotsContainer">
+                    <button class="spread-dot active" onclick="setSpread(0)" title="Разворот 1: 1976"></button>
+                    <button class="spread-dot" onclick="setSpread(1)" title="Разворот 2: 1984"></button>
+                    <button class="spread-dot" onclick="setSpread(2)" title="Разворот 3: 1997"></button>
+                    <button class="spread-dot" onclick="setSpread(3)" title="Разворот 4: 2007"></button>
+                </div>
+
+                <button class="spread-arrow-btn" onclick="stepSpread(1)" title="Следующий разворот" aria-label="Следующий разворот">
+                    <i data-lucide="arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Полноэкранный Lightbox для просмотра архивных снимков -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+        <div class="lightbox-content">
+            <button class="lightbox-close-btn" onclick="closeLightbox(event)">
+                <i data-lucide="x"></i>
+            </button>
+            <img class="lightbox-img" id="lightboxImg" src="" alt="Архивный снимок Стива Джобса">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
 
     <!-- Ключевые принципы / Bento Grid -->
     <section class="section-padding" id="themes">
-        <div class="section-header">
+        <div class="section-header reveal">
+            <div class="badge">
+                <i data-lucide="lightbulb"></i>
+                <span>Философия и ДНК</span>
+            </div>
             <h2>Чему учит книга</h2>
-            <p>Философия и жизненные принципы, создавшие самую дорогую компанию в мире</p>
+            <p>Философия и жизненные принципы, создавшие самую дорогую и влиятельную компанию в мировой истории</p>
         </div>
 
         <div class="bento-grid">
-            <div class="bento-card wide">
+            <div class="bento-card wide reveal reveal-delay-1">
                 <div class="card-icon"><i data-lucide="zap"></i></div>
                 <h3>Поле искажения реальности (Reality Distortion Field)</h3>
                 <p>Способность Джобса убеждать людей в том, что невозможное возможно. В книге подробно описывается, как эта непреклонная вера заставляла инженеров совершать технологические прорывы вопреки всем законам индустрии.</p>
             </div>
-            <div class="bento-card">
+            <div class="bento-card reveal reveal-delay-2">
                 <div class="card-icon"><i data-lucide="minimize"></i></div>
                 <h3>Простота — высшая степень изощренности</h3>
                 <p>Устранение лишнего. Страсть Джобса к минимализму прослеживается во всём: от архитектуры первого Macintosh до интерфейса iPod и iPhone.</p>
             </div>
-            <div class="bento-card">
+            <div class="bento-card reveal reveal-delay-1">
                 <div class="card-icon"><i data-lucide="layers"></i></div>
                 <h3>Замкнутый цикл (Hardware & Software)</h3>
-                <p>Контроль над каждым этапом взаимодействия пользователя с продуктом — ключ к совершенству и непревзойденному качеству.</p>
+                <p>Контроль над каждым этапом взаимодействия пользователя с продуктом — ключ к совершенству, безупречной стабильности и непревзойденному качеству.</p>
             </div>
-            <div class="bento-card wide">
+            <div class="bento-card wide reveal reveal-delay-2">
                 <div class="card-icon"><i data-lucide="palette"></i></div>
                 <h3>Слияние гуманитарных наук и технологий</h3>
                 <p>Джобс всегда стоял на перекрестке технологии и искусства. Книга раскрывает, как курс каллиграфии повлиял на шрифты Mac, а эстетика Баухауса — на дизайн всех устройств Apple.</p>
@@ -777,11 +2306,15 @@
 
     <!-- Секция Об Авторе -->
     <section class="section-padding" id="author">
-        <div class="author-section">
+        <div class="author-section reveal">
             <div class="author-avatar">
                 <img src="isaacson.jpg" alt="Уолтер Айзексон">
             </div>
             <div class="author-info">
+                <div class="badge" style="margin-bottom: 12px;">
+                    <i data-lucide="pen-tool"></i>
+                    <span>Официальный биограф</span>
+                </div>
                 <h3>Кто написал книгу?</h3>
                 <div class="author-subtitle">Бывший председатель CNN и главный редактор журнала Time</div>
                 <p>Уолтер Айзексон — один из самых выдающихся биографов современного мира, автор жизнеописаний Альберта Эйнштейна, Бенджамина Франклина, Леонардо да Винчи и Илона Маска.</p>
@@ -792,34 +2325,38 @@
 
     <!-- Цитаты -->
     <section class="section-padding" id="quotes">
-        <div class="section-header">
+        <div class="section-header reveal">
+            <div class="badge">
+                <i data-lucide="quote"></i>
+                <span>Слова, меняющие сознание</span>
+            </div>
             <h2>Знаменитые цитаты</h2>
-            <p>Мысли, меняющие взгляд на работу, бизнес и жизнь</p>
+            <p>Мысли, меняющие взгляд на работу, бизнес, инновации и саму жизнь</p>
         </div>
 
         <div class="quotes-grid">
-            <div class="quote-card">
+            <div class="quote-card reveal reveal-delay-1">
                 <div class="quote-text">«Вы хотите всю жизнь продавать подслащенную воду или вы хотите пойти со мной и изменить мир?»</div>
                 <div class="quote-author">
                     <i data-lucide="quote" style="width: 16px;"></i>
                     <span>Стив Джобс Джону Скалли (1983)</span>
                 </div>
             </div>
-            <div class="quote-card">
+            <div class="quote-card reveal reveal-delay-2">
                 <div class="quote-text">«Нельзя просто спросить пользователей, что им нужно, и затем попытаться это сделать. К моменту, когда вы это создадите, они захотят кое-что новое.»</div>
                 <div class="quote-author">
                     <i data-lucide="quote" style="width: 16px;"></i>
                     <span>Стив Джобс об исследованиях рынка</span>
                 </div>
             </div>
-            <div class="quote-card">
+            <div class="quote-card reveal reveal-delay-3">
                 <div class="quote-text">«Память о том, что я скоро умру — самый важный инструмент, который помогает мне принимать сложные решения в жизни.»</div>
                 <div class="quote-author">
                     <i data-lucide="quote" style="width: 16px;"></i>
                     <span>Из речи перед выпускниками Стэнфорда</span>
                 </div>
             </div>
-            <div class="quote-card">
+            <div class="quote-card reveal reveal-delay-4">
                 <div class="quote-text">«Оставайтесь голодными. Оставайтесь безрассудными.»</div>
                 <div class="quote-author">
                     <i data-lucide="quote" style="width: 16px;"></i>
@@ -831,34 +2368,38 @@
 
     <!-- Покупка и форматы -->
     <section class="section-padding" id="buy">
-        <div class="section-header">
-            <h2>Выберите формат</h2>
-            <p>Книга доступна во всех популярным форматах для чтения и прослушивания</p>
+        <div class="section-header reveal">
+            <div class="badge">
+                <i data-lucide="shopping-bag"></i>
+                <span>Доступно в России и по всему миру</span>
+            </div>
+            <h2>Выберите свой формат</h2>
+            <p>Книга издана на высочайшем полиграфическом уровне и доступна во всех форматах для комфортного чтения</p>
         </div>
 
         <div class="formats-grid">
-            <div class="format-card">
+            <div class="format-card reveal reveal-delay-1">
                 <div class="format-icon"><i data-lucide="tablet"></i></div>
                 <h3>Электронная</h3>
-                <p>EPUB, FB2, PDF • Мгновенная загрузка на Kindle или iPad</p>
+                <p>EPUB, FB2, PDF • Мгновенная загрузка на iPad, Kindle или смартфон</p>
                 <div class="price-tag">20 $</div>
-                <a href="#" class="btn btn-ghost" style="width: 100%;">Читать сейчас</a>
+                <a href="#buy" class="btn btn-ghost" style="width: 100%;">Читать сейчас</a>
             </div>
 
-            <div class="format-card featured">
+            <div class="format-card featured reveal reveal-delay-2">
                 <div class="format-icon" style="background: #fff; color: #000;"><i data-lucide="book"></i></div>
                 <h3>Твёрдый переплёт</h3>
-                <p>Твёрдая обложка, качественная бумага, иллюстрации</p>
+                <p>Коллекционная суперобложка, мелованная бумага, архивные цветные вкладки</p>
                 <div class="price-tag">100 $</div>
-                <a href="#" class="btn btn-primary" style="width: 100%;">Заказать с доставкой</a>
+                <a href="#buy" class="btn btn-primary" style="width: 100%;">Заказать с доставкой</a>
             </div>
 
-            <div class="format-card">
+            <div class="format-card reveal reveal-delay-3">
                 <div class="format-icon"><i data-lucide="headphones"></i></div>
                 <h3>Аудиокнига</h3>
-                <p>Профессиональный многоголосый дубляж • 25 часов</p>
+                <p>Профессиональный многоголосый дубляж студийного качества • 25 часов</p>
                 <div class="price-tag">60 $</div>
-                <a href="#" class="btn btn-ghost" style="width: 100%;">Слушать отрывок</a>
+                <a href="#audio-teaser" class="btn btn-ghost" style="width: 100%;">Слушать отрывок</a>
             </div>
         </div>
     </section>
@@ -866,16 +2407,484 @@
     <!-- Подвал -->
     <footer>
         <div class="footer-flex">
-            <div>© 2026 Стив Джобс. Официальная биография Уолтера Айзексона.</div>
-            <div style="display: flex; gap: 16px;">
+            <div>© 2026 Стив Джобс. Официальная биография Уолтера Айзексона. Все права сохранены.</div>
+            <div style="display: flex; gap: 20px;">
+                <a href="#about" style="color: var(--text-secondary); text-decoration: none;">Наверх</a>
+                <a href="#timeline" style="color: var(--text-secondary); text-decoration: none;">Вехи</a>
+                <a href="#audio-teaser" style="color: var(--text-secondary); text-decoration: none;">Аудио</a>
                 <a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B8%D0%B2_%D0%94%D0%B6%D0%BE%D0%B1%D1%81_(%D0%BA%D0%BD%D0%B8%D0%B3%D0%B0)" target="_blank" style="color: var(--text-secondary); text-decoration: none;">Wikipedia</a>
             </div>
         </div>
     </footer>
 
-    <!-- Инициализация иконок Lucide -->
+    <!-- Скрипты взаимодействия -->
     <script>
+        // Инициализация Lucide icons
         lucide.createIcons();
+
+        /* ==========================================================================
+           1. СКРОЛЛ REVEAL (IntersectionObserver)
+           ========================================================================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            reveals.forEach(el => revealObserver.observe(el));
+        });
+
+        /* ==========================================================================
+           2. ИНТЕРАКТИВНЫЙ ТАЙМЛАЙН ВЕХ
+           ========================================================================== */
+        let currentTimelineIndex = 0;
+        const totalTimelineMilestones = 4;
+        const progressSteps = ['0%', '33.3%', '66.6%', '100%'];
+
+        function selectTimelineYear(index) {
+            currentTimelineIndex = index;
+            updateTimelineUI();
+        }
+
+        function stepTimeline(delta) {
+            const newIndex = currentTimelineIndex + delta;
+            if (newIndex >= 0 && newIndex < totalTimelineMilestones) {
+                currentTimelineIndex = newIndex;
+                updateTimelineUI();
+            }
+        }
+
+        function updateTimelineUI() {
+            const yearBtns = document.querySelectorAll('.timeline-year-btn');
+            yearBtns.forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === currentTimelineIndex);
+            });
+
+            const progressBar = document.getElementById('timelineProgressBar');
+            if (progressBar) {
+                progressBar.style.width = progressSteps[currentTimelineIndex];
+            }
+
+            for (let i = 0; i < totalTimelineMilestones; i++) {
+                const panel = document.getElementById(`timelinePanel-${i}`);
+                if (panel) {
+                    panel.classList.toggle('active', i === currentTimelineIndex);
+                }
+            }
+
+            const prevBtn = document.getElementById('prevTimelineBtn');
+            const nextBtn = document.getElementById('nextTimelineBtn');
+            if (prevBtn) prevBtn.disabled = currentTimelineIndex === 0;
+            if (nextBtn) nextBtn.disabled = currentTimelineIndex === totalTimelineMilestones - 1;
+
+            const indicator = document.getElementById('timelineStepIndicator');
+            if (indicator) {
+                indicator.textContent = `Веха ${currentTimelineIndex + 1} из ${totalTimelineMilestones}`;
+            }
+
+            lucide.createIcons();
+        }
+
+        window.addEventListener('keydown', (e) => {
+            const timelineSection = document.getElementById('timeline');
+            if (!timelineSection) return;
+            const rect = timelineSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (e.key === 'ArrowLeft') stepTimeline(-1);
+                if (e.key === 'ArrowRight') stepTimeline(1);
+            }
+        });
+
+        /* ==========================================================================
+           3. АУДИО-ПЛЕЕР ТИЗЕРА С ВИЗУАЛИЗАЦИЕЙ ВОЛНЫ
+           ========================================================================== */
+        const audio = document.getElementById('steveJobsAudio');
+        const playBtn = document.getElementById('mainPlayBtn');
+        const playIcon = document.getElementById('playIcon');
+        const playerCard = document.getElementById('playerCard');
+        const timeCurrentEl = document.getElementById('timeCurrent');
+        const timeDurationEl = document.getElementById('timeDuration');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeBtn = document.getElementById('volumeBtn');
+        const speedToggleBtn = document.getElementById('speedToggleBtn');
+        const waveformCanvas = document.getElementById('waveformCanvas');
+        const waveformBox = document.getElementById('waveformBox');
+        const hoverLine = document.getElementById('waveformHoverLine');
+        const tooltip = document.getElementById('waveformTooltip');
+
+        let isPlaying = false;
+        let audioCtx = null;
+        let analyser = null;
+        let sourceNode = null;
+        let animFrameId = null;
+
+        const totalBars = 64;
+        const waveHeights = [];
+        for (let i = 0; i < totalBars; i++) {
+            const centerDist = Math.abs(i - totalBars / 2) / (totalBars / 2);
+            const base = Math.sin((i / totalBars) * Math.PI) * 0.75 + 0.25;
+            const noise = ((Math.sin(i * 1.7) + Math.cos(i * 3.3)) * 0.2 + 0.3);
+            waveHeights.push(Math.max(0.12, Math.min(1.0, base * noise)));
+        }
+
+        function formatTime(seconds) {
+            if (isNaN(seconds) || seconds < 0) return '00:00';
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+        }
+
+        function resizeWaveformCanvas() {
+            if (!waveformCanvas) return;
+            const rect = waveformCanvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            waveformCanvas.width = rect.width * dpr;
+            waveformCanvas.height = rect.height * dpr;
+            drawWaveform();
+        }
+
+        window.addEventListener('resize', resizeWaveformCanvas);
+
+        function initWebAudio() {
+            if (audioCtx) return;
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+                analyser = audioCtx.createAnalyser();
+                analyser.fftSize = 128;
+                sourceNode = audioCtx.createMediaElementSource(audio);
+                sourceNode.connect(analyser);
+                analyser.connect(audioCtx.destination);
+            } catch (e) {
+                console.log('Web Audio context simulation fallback enabled:', e);
+            }
+        }
+
+        function drawWaveform() {
+            if (!waveformCanvas) return;
+            const ctx = waveformCanvas.getContext('2d');
+            const w = waveformCanvas.width;
+            const h = waveformCanvas.height;
+            const dpr = window.devicePixelRatio || 1;
+
+            ctx.clearRect(0, 0, w, h);
+
+            const duration = audio.duration || 60;
+            const currentTime = audio.currentTime || 0;
+            const progress = duration > 0 ? (currentTime / duration) : 0;
+            const currentBarIndex = Math.floor(progress * totalBars);
+
+            let freqData = null;
+            if (analyser && isPlaying) {
+                freqData = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(freqData);
+            }
+
+            const barWidth = (w / totalBars) * 0.58;
+            const barGap = (w / totalBars) * 0.42;
+
+            for (let i = 0; i < totalBars; i++) {
+                const x = i * (barWidth + barGap) + barGap / 2;
+
+                let amplitude = waveHeights[i];
+                if (isPlaying) {
+                    if (freqData && freqData.length > 0) {
+                        const freqIdx = Math.floor((i / totalBars) * (freqData.length / 2));
+                        const liveVal = (freqData[freqIdx] || 0) / 255;
+                        amplitude = amplitude * 0.5 + liveVal * 0.5;
+                    } else {
+                        const t = Date.now() * 0.006;
+                        amplitude += Math.sin(t + i * 0.4) * 0.15;
+                        amplitude = Math.max(0.1, Math.min(1.0, amplitude));
+                    }
+                }
+
+                const barHeight = Math.max(4 * dpr, amplitude * (h * 0.76));
+                const y = (h - barHeight) / 2;
+                const radius = barWidth / 2;
+
+                ctx.beginPath();
+                if (ctx.roundRect) {
+                    ctx.roundRect(x, y, barWidth, barHeight, radius);
+                } else {
+                    ctx.rect(x, y, barWidth, barHeight);
+                }
+
+                if (i <= currentBarIndex) {
+                    const grad = ctx.createLinearGradient(0, y, 0, y + barHeight);
+                    grad.addColorStop(0, '#ffffff');
+                    grad.addColorStop(1, '#2997ff');
+                    ctx.fillStyle = grad;
+                } else {
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.22)';
+                }
+                ctx.fill();
+            }
+
+            if (isPlaying) {
+                animFrameId = requestAnimationFrame(drawWaveform);
+            }
+        }
+
+        async function togglePlay() {
+            initWebAudio();
+            if (audioCtx && audioCtx.state === 'suspended') {
+                await audioCtx.resume();
+            }
+
+            if (audio.paused) {
+                try {
+                    await audio.play();
+                    isPlaying = true;
+                    playerCard.classList.add('is-playing');
+                    playBtn.innerHTML = '<i data-lucide="pause"></i>';
+                    lucide.createIcons();
+                    drawWaveform();
+                } catch (err) {
+                    console.error('Audio play error:', err);
+                }
+            } else {
+                audio.pause();
+                isPlaying = false;
+                playerCard.classList.remove('is-playing');
+                playBtn.innerHTML = '<i data-lucide="play"></i>';
+                lucide.createIcons();
+                cancelAnimationFrame(animFrameId);
+                drawWaveform();
+            }
+        }
+
+        if (playBtn) {
+            playBtn.addEventListener('click', togglePlay);
+        }
+
+        audio.addEventListener('loadedmetadata', () => {
+            timeDurationEl.textContent = formatTime(audio.duration);
+            drawWaveform();
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            timeCurrentEl.textContent = formatTime(audio.currentTime);
+            if (!isPlaying) drawWaveform();
+        });
+
+        audio.addEventListener('ended', () => {
+            isPlaying = false;
+            playerCard.classList.remove('is-playing');
+            playBtn.innerHTML = '<i data-lucide="play"></i>';
+            lucide.createIcons();
+            cancelAnimationFrame(animFrameId);
+            drawWaveform();
+        });
+
+        if (waveformBox) {
+            waveformBox.addEventListener('click', (e) => {
+                const rect = waveformBox.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+                const targetTime = ratio * (audio.duration || 60);
+                audio.currentTime = targetTime;
+                drawWaveform();
+            });
+
+            waveformBox.addEventListener('mousemove', (e) => {
+                const rect = waveformBox.getBoundingClientRect();
+                const hoverX = e.clientX - rect.left;
+                const ratio = Math.max(0, Math.min(1, hoverX / rect.width));
+                hoverLine.style.left = `${hoverX}px`;
+                tooltip.style.left = `${hoverX}px`;
+                const hoverSec = ratio * (audio.duration || 60);
+                tooltip.textContent = formatTime(hoverSec);
+            });
+        }
+
+        function skipAudio(seconds) {
+            audio.currentTime = Math.max(0, Math.min(audio.duration || 60, audio.currentTime + seconds));
+            drawWaveform();
+        }
+
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', (e) => {
+                audio.volume = parseFloat(e.target.value);
+                updateVolumeIcon();
+            });
+        }
+
+        function toggleMute() {
+            if (audio.volume > 0) {
+                audio.dataset.prevVolume = audio.volume;
+                audio.volume = 0;
+                volumeSlider.value = 0;
+            } else {
+                audio.volume = parseFloat(audio.dataset.prevVolume || 1);
+                volumeSlider.value = audio.volume;
+            }
+            updateVolumeIcon();
+        }
+
+        function updateVolumeIcon() {
+            const volIcon = document.getElementById('volumeIcon');
+            if (!volIcon) return;
+            if (audio.volume === 0) {
+                volIcon.setAttribute('data-lucide', 'volume-x');
+            } else if (audio.volume < 0.5) {
+                volIcon.setAttribute('data-lucide', 'volume-1');
+            } else {
+                volIcon.setAttribute('data-lucide', 'volume-2');
+            }
+            lucide.createIcons();
+        }
+
+        const rates = [1.0, 1.25, 1.5];
+        let rateIndex = 0;
+        function togglePlaybackRate() {
+            rateIndex = (rateIndex + 1) % rates.length;
+            audio.playbackRate = rates[rateIndex];
+            speedToggleBtn.textContent = `${rates[rateIndex]}x`;
+        }
+
+        /* ==========================================================================
+           4. ПРЕВЬЮ СТРАНИЦ КНИГИ (FLIPBOOK / КАРУСЕЛЬ РАЗВОРОТОВ)
+           ========================================================================== */
+        const bookSpreads = [
+            {
+                year: 'КАЛИФОРНИЯ, 1976',
+                leftHeader: 'АРХИВ WALTER ISAACSON',
+                image: 'images/archive_garage_1976.jpg',
+                caption: 'Рис. 5.1. Стив Возняк и Стив Джобс за столом в гараже родителей, собирающие плату Apple I с помощью ручного паяльника.',
+                leftPageNum: 'Стр. 48',
+                runningHead: 'УОЛТЕР АЙЗЕКСОН • СТИВ ДЖОБС',
+                chapterRoman: 'ГЛАВА V',
+                chapterLabel: 'Глава 5',
+                chapterTitle: 'Рождение Apple в гараже Лос-Альтоса',
+                dropCap: 'К',
+                text: 'огда Возняк завершил сборку печатной платы, он подключил её к клавиатуре и обычному телевизору. На экране замигал курсор. Это был священный момент: впервые в истории человечества печать на клавиатуре мгновенно вызывала появление символа на домашнем мониторе. Джобс смотрел на экран с расширенными зрачками. В отличие от Воза, видевшего в этом забавный инженерный фокус для клуба Homebrew Computer Club, Стив мгновенно осознал: перед ними будущее целой цивилизации. «Мы продадим это», — тихо сказал он. Так из запаха канифоли и детского микроавтобуса родилась корпорация Apple.',
+                rightNote: 'Часть I. Истоки гения',
+                rightPageNum: 'Стр. 49'
+            },
+            {
+                year: 'КУПЕРТИНО, 1984',
+                leftHeader: 'ФОТО: NORMAN SEEFF',
+                image: 'images/archive_macintosh_1984.jpg',
+                caption: 'Рис. 14.3. Стив Джобс в своей квартире на Джексон-стрит, сидящий по-турецки на полу с первым компьютером Macintosh.',
+                leftPageNum: 'Стр. 172',
+                runningHead: 'ГЛАВА XIV • ПИРАТЫ КРЕМНИЕВОЙ ДОЛИНЫ',
+                chapterRoman: 'ГЛАВА XIV',
+                chapterLabel: 'Глава 14',
+                chapterTitle: '«Лучше быть пиратом, чем служить во флоте»',
+                dropCap: 'Н',
+                text: 'ад зданием команды Macintosh взвился черный пиратский флаг. На черепе красовалась радужная повязка на глазу в форме яблока Apple. Джобс требовал от каждого разработчика относиться к коду и микросхемам как к произведениям искусства. Когда Билл Аткинсон изобрел алгоритм скругленных прямоугольников, Стив не принял работу, пока тот не довел радиус кривизны до абсолютного оптического совершенства. «Настоящие художники доводят до конца», — внушал Джобс, заставив каждого инженера выгравировать свою подпись на внутренней стороне пластикового корпуса Mac.',
+                rightNote: 'Часть II. Рождение Macintosh',
+                rightPageNum: 'Стр. 173'
+            },
+            {
+                year: 'БОСТОН / САН-ФРАНЦИСКО, 1997',
+                leftHeader: 'ПРЕСС-СЛУЖБА APPLE INC.',
+                image: 'images/archive_think_different_1997.jpg',
+                caption: 'Рис. 24.2. Стив Джобс в студии перед утверждением телевизионной версии манифеста «Think Different», осень 1997 года.',
+                leftPageNum: 'Стр. 346',
+                runningHead: 'ГЛАВА XXIV • ВТОРОЕ ПРИШЕСТВИЕ',
+                chapterRoman: 'ГЛАВА XXIV',
+                chapterLabel: 'Глава 24',
+                chapterTitle: 'Возвращение души и спасение Apple',
+                dropCap: 'В',
+                text: 'оскресным утром в июле 1997 года Джобс поднялся на трибуну Macworld в Бостоне. Зал замер. Позади него на гигантском экране появилось лицо Билла Гейтса, объявившего о соглашении между Microsoft и Apple на $150 млн. Джобс остановил недовольный гул зала твердым голосом: «Эпоха, когда для победы Apple требовалось поражение Microsoft, подошла к концу. Мы должны вернуть Apple её величие». Через неделю он запер совет директоров в комнате, нарисовал на доске сетку из четырех квадратов (Потребитель / Профи, Десктоп / Портативный) и стер все остальные проекты.',
+                rightNote: 'Часть IV. Возрождение империи',
+                rightPageNum: 'Стр. 347'
+            },
+            {
+                year: 'MOSCONE CENTER, 2007',
+                leftHeader: 'KEYNOTE MACWORLD 2007',
+                image: 'images/archive_iphone_2007.jpg',
+                caption: 'Рис. 35.4. Исторический момент: Стив Джобс впервые показывает миру работающий iPhone, 9 января 2007 года.',
+                leftPageNum: 'Стр. 480',
+                runningHead: 'ГЛАВА XXXV • УСТРОЙСТВО В КАРМАНЕ',
+                chapterRoman: 'ГЛАВА XXXV',
+                chapterLabel: 'Глава 35',
+                chapterTitle: '«Сегодня мы изобретаем телефон заново»',
+                dropCap: 'Э',
+                text: 'то был день, которого Стив ждал два с половиной года в строжайшей секретности. Проект под кодовым именем «Purple 2» создавался на грани нервного срыва всей инженерной команды. Джобс ненавидел мобильные телефоны своего времени: пластиковые клавиатуры, запутанные меню, уродливый дизайн. На сцене он плавно провел пальцем по стеклу, разблокировав аппарат — и аудитория взорвалась овацией. Стив улыбнулся: мир персональных компьютеров, каким его знали тридцать лет, в это мгновение ушел в прошлое навсегда.',
+                rightNote: 'Часть V. Новая эра',
+                rightPageNum: 'Стр. 481'
+            }
+        ];
+
+        let currentSpreadIndex = 0;
+
+        function setSpread(index) {
+            currentSpreadIndex = index;
+            renderSpread();
+        }
+
+        function stepSpread(delta) {
+            currentSpreadIndex = (currentSpreadIndex + delta + bookSpreads.length) % bookSpreads.length;
+            renderSpread();
+        }
+
+        function renderSpread() {
+            const data = bookSpreads[currentSpreadIndex];
+            const spreadCard = document.getElementById('bookSpreadCard');
+
+            spreadCard.style.opacity = '0.4';
+            spreadCard.style.transform = 'scale(0.985)';
+
+            setTimeout(() => {
+                document.getElementById('spreadEraBadge').textContent = data.year;
+                document.getElementById('spreadLeftHeader').textContent = data.leftHeader;
+                document.getElementById('spreadImage').src = data.image;
+                document.getElementById('spreadPhotoCaption').textContent = data.caption;
+                document.getElementById('spreadLeftPageNum').textContent = data.leftPageNum;
+
+                document.getElementById('spreadBookRunningHead').textContent = data.runningHead;
+                document.getElementById('spreadChapterRoman').textContent = data.chapterRoman;
+                document.getElementById('spreadChapterLabel').textContent = data.chapterLabel;
+                document.getElementById('spreadChapterTitle').textContent = data.chapterTitle;
+                document.getElementById('spreadDropCap').textContent = data.dropCap;
+                document.getElementById('spreadMainText').textContent = data.text;
+                document.getElementById('spreadRightChapterNote').textContent = data.rightNote;
+                document.getElementById('spreadRightPageNum').textContent = data.rightPageNum;
+
+                const dots = document.querySelectorAll('.spread-dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentSpreadIndex);
+                });
+
+                spreadCard.style.opacity = '1';
+                spreadCard.style.transform = 'scale(1)';
+                lucide.createIcons();
+            }, 200);
+        }
+
+        function openLightbox() {
+            const modal = document.getElementById('lightboxModal');
+            const img = document.getElementById('lightboxImg');
+            const caption = document.getElementById('lightboxCaption');
+            const currentData = bookSpreads[currentSpreadIndex];
+
+            img.src = currentData.image;
+            caption.textContent = currentData.caption;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            lucide.createIcons();
+        }
+
+        function closeLightbox(e) {
+            if (e.target.closest('.lightbox-content img')) return;
+            const modal = document.getElementById('lightboxModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        window.addEventListener('load', () => {
+            resizeWaveformCanvas();
+        });
     </script>
 </body>
 </html>
