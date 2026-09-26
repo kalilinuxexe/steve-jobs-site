@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Стив Джобс — Официальная биография Уолтера Айзексона</title>
+    <!-- Подключение шрифтов Inter и Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Иконки Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-main: #000000;
+            --bg-surface: #0a0a0c;
+            --bg-card: rgba(22, 22, 26, 0.7);
+            --bg-card-hover: rgba(32, 32, 38, 0.85);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --border-glow: rgba(255, 255, 255, 0.25);
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-silver: #e5e5ea;
+            --accent-blue: #2997ff;
+            --gradient-apple: linear-gradient(135deg, #ffffff 0%, #86868b 100%);
+            --gradient-glow: radial-gradient(circle at 50% -20%, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+            --radius-lg: 18px;
+            --radius-xl: 28px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Атмосферное фоновое свечение */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 40%, rgba(41, 151, 255, 0.05) 0%, transparent 40%);
+        }
+
+        /* Шапка */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(0, 0, 0, 0.75);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .logo svg {
+            fill: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+        }
+
+        .btn-ghost {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--border-color);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #f0f0f5;
+            box-shadow: 0 6px 28px rgba(255, 255, 255, 0.35);
+        }
+
+        /* Hero секция */
+        .hero {
+            padding: 160px 24px 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            background: var(--gradient-apple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            font-weight: 400;
+            max-width: 540px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* 3D Книга (CSS Эффект) */
+        .book-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1200px;
+            padding: 20px 0;
+        }
+
+        .book-3d {
+            width: 280px;
+            height: 410px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-28deg) rotateX(8deg);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .book-3d:hover {
+            transform: rotateY(-8deg) rotateX(4deg) translateY(-8px) scale(1.02);
+        }
+
+        .side {
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+        }
+
+        .side.front {
+            width: 280px;
+            height: 410px;
+            background: #0d0d11;
+            transform: translateZ(24px);
+            border-radius: 3px 8px 8px 3px;
+            overflow: hidden;
+            box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .side.front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .fallback-cover {
+            width: 100%;
+            height: 100%;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(145deg, #1a1a20, #0a0a0d);
+            box-sizing: border-box;
+        }
+
+        .fb-author {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .fb-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #fff;
+            margin-top: 6px;
+            letter-spacing: -0.02em;
+        }
+
+        .fb-sub {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .fb-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto 0;
+            color: #fff;
+            opacity: 0.9;
+        }
+
+        .fb-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 14px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .side.spine {
+            width: 48px;
+            height: 410px;
+            background: #111116;
+            transform: rotateY(-90deg) translateZ(24px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 3px 0 0 3px;
+        }
+
+        .side.spine span {
+            transform: rotate(-90deg);
+            white-space: nowrap;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        .side.pages {
+            width: 44px;
+            height: 402px;
+            top: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                #d8d8d8 0px,
+                #ffffff 1px,
+                #c4c4c4 2px,
+                #f0f0f0 3px
+            );
+            transform: rotateY(90deg) translateZ(255px);
+            border-radius: 0 2px 2px 0;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .side.back {
+            width: 280px;
+            height: 410px;
+            background: #08080a;
+            transform: rotateY(180deg) translateZ(24px);
+            border-radius: 8px 3px 3px 8px;
+            box-shadow: -35px 35px 50px rgba(0, 0, 0, 0.95),
+                        -15px 15px 25px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Статистика */
+        .stats-bar {
+            border-y: 1px solid var(--border-color);
+            background: rgba(10, 10, 12, 0.6);
+            backdrop-filter: blur(12px);
+            padding: 40px 24px;
+            margin-bottom: 80px;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Bento Grid Темы */
+        .section-padding {
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .bento-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-4px);
+            background: var(--bg-card-hover);
+        }
+
+        .bento-card.wide {
+            grid-column: span 2;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .bento-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .bento-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Об авторе */
+        .author-section {
+            background: rgba(18, 18, 22, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: 60px 48px;
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 48px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .author-avatar {
+            width: 100%;
+            height: 320px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+        }
+
+        .author-info h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .author-subtitle {
+            color: var(--accent-blue);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .author-info p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 16px;
+        }
+
+        /* Цитаты */
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .quote-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .quote-text {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #e5e5ea;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .quote-author {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: normal;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Форматы и Покупка */
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .format-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 36px 28px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .format-card.featured {
+            border-color: #ffffff;
+            background: linear-gradient(180deg, rgba(255,255,255,0.08) 0%, rgba(22,22,26,0.8) 100%);
+        }
+
+        .format-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .format-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .format-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: #fff;
+        }
+
+        /* Футер */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 60px 24px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero p { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .stats-container { grid-template-columns: repeat(2, 1fr); }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card.wide { grid-column: span 1; }
+            .author-section { grid-template-columns: 1fr; text-align: center; }
+            .quotes-grid { grid-template-columns: 1fr; }
+            .formats-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <!-- Шапка -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <!-- Векторный оригинал логотипа Apple -->
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.13-1.96.99-3.1-.97.04-2.16.65-2.85 1.46-.62.72-1.16 1.88-1.01 3 1.08.08 2.2-.54 2.87-1.36z"/>
+                </svg>
+                <span>STEVE JOBS</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">О книге</a></li>
+                <li><a href="#themes">Ключевые идеи</a></li>
+                <li><a href="#author">Уолтер Айзексон</a></li>
+                <li><a href="#quotes">Цитаты</a></li>
+                <li><a href="#buy">Купить</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#buy" class="btn btn-primary">Заказать книгу</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Секция -->
+    <section class="hero" id="about">
+        <div>
+            <div class="badge">
+                <i data-lucide="book-open" style="width: 14px;"></i>
+                <span>Единственная официальная биография</span>
+            </div>
+            <h1>История гения, изменившего мир</h1>
+            <p>Эксклюзивное откровение о жизни, характере и цифровой революции Стива Джобса, основанное на более чем сорока личных интервью и беседах со сотней его друзей, коллег и соперников.</p>
+            <div class="hero-buttons">
+                <a href="#buy" class="btn btn-primary">
+                    <span>Выбрать формат</span>
+                    <i data-lucide="arrow-right"></i>
+                </a>
+                <a href="#themes" class="btn btn-ghost">
+                    <i data-lucide="sparkles"></i>
+                    <span>Узнать ключевые темы</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 3D Обложка -->
+        <div class="book-wrapper">
+            <div class="book-3d">
+                <!-- Лицевая грань -->
+                <div class="side front">
+                    <img src="cover.jpg" alt="Стив Джобс — Уолтер Айзексон" onerror="this.style.display='none'; document.getElementById('css-cover-fallback').style.display='flex';">
+                    
+                    <!-- Запасная CSS-обложка -->
+                    <div id="css-cover-fallback" class="fallback-cover" style="display: none;">
+                        <span class="fb-author">WALTER ISAACSON</span>
+                        <h2 class="fb-title">STEVE JOBS</h2>
+                        <span class="fb-sub">Официальная биография</span>
+                        <div class="fb-icon">
+                            <!-- Оригинальное яблоко Apple на обложке -->
+                            <svg viewBox="0 0 24 24" width="70" height="70" fill="currentColor">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.13-1.96.99-3.1-.97.04-2.16.65-2.85 1.46-.62.72-1.16 1.88-1.01 3 1.08.08 2.2-.54 2.87-1.36z"/>
+                            </svg>
+                        </div>
+                        <div class="fb-footer">
+                            <span>SIMON & SCHUSTER</span>
+                            <span>#1 BESTSELLER</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Корешок -->
+                <div class="side spine">
+                    <span>УОЛТЕР АЙЗЕКСОН — СТИВ ДЖОБС</span>
+                </div>
+
+                <!-- Блок со страницами -->
+                <div class="side pages"></div>
+
+                <!-- Задняя сторона -->
+                <div class="side back"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Полоса статистики -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>40+</h3>
+                <p>Личных интервью с Джобсом</p>
+            </div>
+            <div class="stat-item">
+                <h3>100+</h3>
+                <p>Опрошенных близких и коллег</p>
+            </div>
+            <div class="stat-item">
+                <h3>3 года</h3>
+                <p>Глубокой исследовательской работы</p>
+            </div>
+            <div class="stat-item">
+                <h3>#1</h3>
+                <p>Бестселлер по версии New York Times</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ключевые принципы / Bento Grid -->
+    <section class="section-padding" id="themes">
+        <div class="section-header">
+            <h2>Чему учит книга</h2>
+            <p>Философия и жизненные принципы, создавшие самую дорогую компанию в мире</p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-card wide">
+                <div class="card-icon"><i data-lucide="zap"></i></div>
+                <h3>Поле искажения реальности (Reality Distortion Field)</h3>
+                <p>Способность Джобса убеждать людей в том, что невозможное возможно. В книге подробно описывается, как эта непреклонная вера заставляла инженеров совершать технологические прорывы вопреки всем законам индустрии.</p>
+            </div>
+            <div class="bento-card">
+                <div class="card-icon"><i data-lucide="minimize"></i></div>
+                <h3>Простота — высшая степень изощренности</h3>
+                <p>Устранение лишнего. Страсть Джобса к минимализму прослеживается во всём: от архитектуры первого Macintosh до интерфейса iPod и iPhone.</p>
+            </div>
+            <div class="bento-card">
+                <div class="card-icon"><i data-lucide="layers"></i></div>
+                <h3>Замкнутый цикл (Hardware & Software)</h3>
+                <p>Контроль над каждым этапом взаимодействия пользователя с продуктом — ключ к совершенству и непревзойденному качеству.</p>
+            </div>
+            <div class="bento-card wide">
+                <div class="card-icon"><i data-lucide="palette"></i></div>
+                <h3>Слияние гуманитарных наук и технологий</h3>
+                <p>Джобс всегда стоял на перекрестке технологии и искусства. Книга раскрывает, как курс каллиграфии повлиял на шрифты Mac, а эстетика Баухауса — на дизайн всех устройств Apple.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция Об Авторе -->
+    <section class="section-padding" id="author">
+        <div class="author-section">
+            <div class="author-avatar">
+                <img src="isaacson.jpg" alt="Уолтер Айзексон">
+            </div>
+            <div class="author-info">
+                <h3>Кто написал книгу?</h3>
+                <div class="author-subtitle">Бывший председатель CNN и главный редактор журнала Time</div>
+                <p>Уолтер Айзексон — один из самых выдающихся биографов современного мира, автор жизнеописаний Альберта Эйнштейна, Бенджамина Франклина, Леонардо да Винчи и Илона Маска.</p>
+                <p>Стив Джобс сам обратился к Айзексону с просьбой написать честную книгу без купюр и цензуры, отказавшись от какого-либо контроля над содержанием рукописи.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цитаты -->
+    <section class="section-padding" id="quotes">
+        <div class="section-header">
+            <h2>Знаменитые цитаты</h2>
+            <p>Мысли, меняющие взгляд на работу, бизнес и жизнь</p>
+        </div>
+
+        <div class="quotes-grid">
+            <div class="quote-card">
+                <div class="quote-text">«Вы хотите всю жизнь продавать подслащенную воду или вы хотите пойти со мной и изменить мир?»</div>
+                <div class="quote-author">
+                    <i data-lucide="quote" style="width: 16px;"></i>
+                    <span>Стив Джобс Джону Скалли (1983)</span>
+                </div>
+            </div>
+            <div class="quote-card">
+                <div class="quote-text">«Нельзя просто спросить пользователей, что им нужно, и затем попытаться это сделать. К моменту, когда вы это создадите, они захотят кое-что новое.»</div>
+                <div class="quote-author">
+                    <i data-lucide="quote" style="width: 16px;"></i>
+                    <span>Стив Джобс об исследованиях рынка</span>
+                </div>
+            </div>
+            <div class="quote-card">
+                <div class="quote-text">«Память о том, что я скоро умру — самый важный инструмент, который помогает мне принимать сложные решения в жизни.»</div>
+                <div class="quote-author">
+                    <i data-lucide="quote" style="width: 16px;"></i>
+                    <span>Из речи перед выпускниками Стэнфорда</span>
+                </div>
+            </div>
+            <div class="quote-card">
+                <div class="quote-text">«Оставайтесь голодными. Оставайтесь безрассудными.»</div>
+                <div class="quote-author">
+                    <i data-lucide="quote" style="width: 16px;"></i>
+                    <span>Заключительный наказ книги</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Покупка и форматы -->
+    <section class="section-padding" id="buy">
+        <div class="section-header">
+            <h2>Выберите формат</h2>
+            <p>Книга доступна во всех популярным форматах для чтения и прослушивания</p>
+        </div>
+
+        <div class="formats-grid">
+            <div class="format-card">
+                <div class="format-icon"><i data-lucide="tablet"></i></div>
+                <h3>Электронная</h3>
+                <p>EPUB, FB2, PDF • Мгновенная загрузка на Kindle или iPad</p>
+                <div class="price-tag">20 $</div>
+                <a href="#" class="btn btn-ghost" style="width: 100%;">Читать сейчас</a>
+            </div>
+
+            <div class="format-card featured">
+                <div class="format-icon" style="background: #fff; color: #000;"><i data-lucide="book"></i></div>
+                <h3>Твёрдый переплёт</h3>
+                <p>Твёрдая обложка, качественная бумага, иллюстрации</p>
+                <div class="price-tag">100 $</div>
+                <a href="#" class="btn btn-primary" style="width: 100%;">Заказать с доставкой</a>
+            </div>
+
+            <div class="format-card">
+                <div class="format-icon"><i data-lucide="headphones"></i></div>
+                <h3>Аудиокнига</h3>
+                <p>Профессиональный многоголосый дубляж • 25 часов</p>
+                <div class="price-tag">60 $</div>
+                <a href="#" class="btn btn-ghost" style="width: 100%;">Слушать отрывок</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="footer-flex">
+            <div>© 2026 Стив Джобс. Официальная биография Уолтера Айзексона.</div>
+            <div style="display: flex; gap: 16px;">
+                <a href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B8%D0%B2_%D0%94%D0%B6%D0%BE%D0%B1%D1%81_(%D0%BA%D0%BD%D0%B8%D0%B3%D0%B0)" target="_blank" style="color: var(--text-secondary); text-decoration: none;">Wikipedia</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Инициализация иконок Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
